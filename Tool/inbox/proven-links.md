@@ -32,3 +32,4 @@ https://b23.tv/xxxxxxxx  2026-10 规则怪谈那条，拿了 140+ 赞
 
 （下面开始贴链接）
 https://b23.tv/exSgf80 #2天内获得8赞
+https://b23.tv/8V8QikK #偏技术分析论证评论，长评论

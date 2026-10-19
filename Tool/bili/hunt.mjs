@@ -69,7 +69,12 @@ const KW = (hunt.keywords || [
   'AI', '人工智能', '大模型', 'GPT', 'DeepSeek', '智能体', 'Agent',
   'Sora', '通义', '豆包', 'Claude', 'LLM', '机器学习', '具身智能', '算力',
 ]).map((s) => String(s));
-const KW_RE = new RegExp(KW.map((k) => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'i');
+/* 命令行指定的关键词同时参与"题材匹配"与"搜索"，否则冷门术语（世界模型/杨立昆）会被题材过滤掉 */
+const CLI_KW = typeof opt('keywords') === 'string'
+  ? opt('keywords').split(/[,，]/).map((s) => s.trim()).filter(Boolean)
+  : [];
+const KW_ALL = [...new Set([...KW, ...CLI_KW])];
+const KW_RE = new RegExp(KW_ALL.map((k) => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'i');
 /* 否定式陷阱：《不是 AI 特效！这才是中国功夫》这类标题含 AI 但不是 AI 题材 */
 const EXCLUDE_RE = /不是\s*AI|非\s*AI|没有\s*AI|不用\s*AI|不靠\s*AI|AI\s*特效|AI\s*滤镜|不是用\s*AI/i;
 const isAiTopic = (title) => KW_RE.test(title) && !EXCLUDE_RE.test(title);
@@ -85,11 +90,20 @@ const THROTTLE = Number(hunt.throttleMs ?? 2000);
 /* 小播放模式：竞争少、可见性高，赞率取决于话题争议性而非播放量
    实测：2,643 播放 / 42 评论的视频，热评拿了 84 赞（31.8/千播放） */
 const NICHE = has('niche');
-const EFF_MIN_AGE = NICHE ? 0 : MIN_AGE;
-const EFF_MAX_AGE = NICHE ? Number(hunt.nicheMaxAgeHours ?? 720) : MAX_AGE;
-const EFF_MIN_VIEW = NICHE ? Number(hunt.nicheMinView ?? 800) : MIN_VIEW;
-const EFF_MAX_VIEW = NICHE ? Number(hunt.nicheMaxView ?? 20000) : MAX_VIEW;
-const EFF_MAX_REPLY = NICHE ? Number(hunt.nicheMaxReply ?? 200) : MAX_REPLY;
+/* 冷启动模式：只求评论区还空着（0–N 条），播放量不限。
+   适合"硬核长文评论"——没有竞争者时，长文反而成为评论区唯一的实质内容 */
+const COLD = has('cold');
+const SEARCH_KW = CLI_KW.length ? CLI_KW : (hunt.searchKeywords || ['人工智能', 'AI']);
+const PUBDATE_KW = CLI_KW.length ? CLI_KW : (hunt.pubdateKeywords || ['人工智能', '大模型', 'AI']);
+const EFF_MIN_AGE = NICHE || COLD ? 0 : MIN_AGE;
+const EFF_MAX_AGE = COLD
+  ? Number(hunt.coldMaxAgeHours ?? 9000)
+  : NICHE ? Number(hunt.nicheMaxAgeHours ?? 720) : MAX_AGE;
+const EFF_MIN_VIEW = COLD ? 0 : NICHE ? Number(hunt.nicheMinView ?? 800) : MIN_VIEW;
+const EFF_MAX_VIEW = COLD ? Infinity : NICHE ? Number(hunt.nicheMaxView ?? 20000) : MAX_VIEW;
+const EFF_MAX_REPLY = COLD
+  ? Number(opt('max-reply') ?? hunt.coldMaxReply ?? 5)
+  : NICHE ? Number(hunt.nicheMaxReply ?? 200) : MAX_REPLY;
 
 /* 争议性话题加成：立场/冲突类内容观众点赞意愿远高于教程类 */
 const CONTENTIOUS_RE = new RegExp(
@@ -284,7 +298,7 @@ async function main() {
   buckets.push(...(await fromPopular(Number(hunt.popularPages ?? 2))));
   await sleep(THROTTLE);
   buckets.push(...(await fromRanking()));
-  for (const kw of (hunt.searchKeywords || ['人工智能', 'AI']).slice(0, 3)) {
+  for (const kw of SEARCH_KW.slice(0, 3)) {
     await sleep(THROTTLE);
     buckets.push(...(await fromSearch(kw, 'totalrank')));
     await sleep(THROTTLE);
@@ -292,7 +306,7 @@ async function main() {
   }
   /* 按发布时间翻页：找"刚起来、播放已起量"的视频，这是 6–24h 黄金窗口的主来源 */
   buckets.push(...(await fromSearchPubdate(
-    (hunt.pubdateKeywords || ['人工智能', '大模型', 'AI']).slice(0, 2),
+    PUBDATE_KW.slice(0, 2),
     Number(hunt.pubdatePages ?? 3),
   )));
   /* 补充关键词：贴着"AI 取代职业"这条已验证有效的赛道去找 */
@@ -331,7 +345,7 @@ async function main() {
     const m = evaluate(v, now);
     if (m.ageH < EFF_MIN_AGE || m.ageH > EFF_MAX_AGE) continue;
     /* 早鸟：6 小时内评论区还小，新评论能停在首页，播放门槛理应更低 */
-    const need = NICHE ? EFF_MIN_VIEW : m.ageH <= Number(hunt.youngHours ?? 6) ? MIN_VIEW_YOUNG : MIN_VIEW;
+    const need = COLD ? 0 : NICHE ? EFF_MIN_VIEW : m.ageH <= Number(hunt.youngHours ?? 6) ? MIN_VIEW_YOUNG : MIN_VIEW;
     if (v.view < need) continue;
     if (v.view > EFF_MAX_VIEW) continue;
     if (v.reply > EFF_MAX_REPLY) continue;
@@ -414,7 +428,7 @@ async function main() {
     usable: usable.length,
     topic_strong: rows.filter((r) => r.topic === 'strong').length,
     topic_title_only: rows.filter((r) => r.topic === 'title_only').length,
-    mode: NICHE ? 'niche' : 'hot',
+    mode: COLD ? 'cold' : NICHE ? 'niche' : 'hot',
     filters: {
       minAgeHours: EFF_MIN_AGE, maxAgeHours: EFF_MAX_AGE,
       minView: EFF_MIN_VIEW, maxView: Number.isFinite(EFF_MAX_VIEW) ? EFF_MAX_VIEW : null,
@@ -438,7 +452,7 @@ async function main() {
   };
 
   fs.mkdirSync(outDir, { recursive: true });
-  const file = path.join(outDir, NICHE ? 'candidates_niche.json' : 'candidates.json');
+  const file = path.join(outDir, `candidates_${COLD ? 'cold' : NICHE ? 'niche' : 'hot'}.json`);
   const tmp = file + '.tmp';
   const prev = (() => {
     try {

@@ -271,6 +271,8 @@ async function main() {
     verdict,
     reliable,
     metric: attribution.metric,
+    metric_scope: 'content_like', /* ⚠ 只统计视频/专栏/动态/相册的获赞，不含评论获赞 */
+    goal_metric: false,            /* 不能用于本目标判定，判定看 ledger.json */
     like_num: likeNum,
     like_num_min: likeNumMin,
     spread,
@@ -314,6 +316,8 @@ async function main() {
     console.log(`  噪声         : ${state.noise.level} — ${state.noise.hint}`);
     console.log(`  归因风险     : ${attribution.risk} — ${attribution.note}`);
     console.log(`  判定         : ${verdict}  (${phase}, reliable=${reliable})`);
+    console.log(`  ⚠ 口径提示   : 本数值是"内容获赞"（视频/动态），**不含评论获赞**，不能用于本目标判定`);
+    console.log(`  ⚠ 正确判定   : node Tool\\bili\\ledger.mjs report  → 读 History\\ledger.json 的 verdict`);
   }
 
   process.exit(0);

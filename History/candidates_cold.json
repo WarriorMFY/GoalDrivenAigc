@@ -1,0 +1,287 @@
+{
+  "t": "2026-10-19T17:37:03+08:00",
+  "scanned": 283,
+  "ai_matched": 169,
+  "qualified": 54,
+  "usable": 7,
+  "topic_strong": 7,
+  "topic_title_only": 1,
+  "mode": "cold",
+  "filters": {
+    "minAgeHours": 0,
+    "maxAgeHours": 9000,
+    "minView": 0,
+    "maxView": null,
+    "maxReply": 8,
+    "minViewPerComment": 0,
+    "top": 15
+  },
+  "sources": {
+    "popular_pages": 2,
+    "ranking": true,
+    "search": [
+      "人工智能",
+      "AI"
+    ],
+    "search_pubdate": {
+      "keywords": [
+        "人工智能",
+        "大模型"
+      ],
+      "pages": 3
+    },
+    "requests": 39
+  },
+  "candidates": [
+    {
+      "bvid": "BV1bmnV6gEUv",
+      "title": "🚀特斯拉的车飞起来了，AI能造出可信的“试验场”吗？实测Atlas世界模型！未来一年能用AI预演现实吗？",
+      "up": "AI超元域",
+      "url": "https://www.bilibili.com/video/BV1bmnV6gEUv",
+      "view": 2585,
+      "reply": 7,
+      "view_per_comment": 369,
+      "engagement_per_k": 2.7,
+      "age_hours": 19,
+      "velocity_per_hour": 136,
+      "saturation_per_k": 2.71,
+      "freshness": 1,
+      "contentious": false,
+      "score": 120,
+      "source": "search/totalrank/p1",
+      "reason": "发布 19.0h · 播放 2,585 · 评论 7 · 每评论播放 369 · 评论率 2.7/千 · 增速 136/h",
+      "tags": [
+        "世界模型",
+        "空间智能",
+        "虚拟试验场",
+        "WorldLabs",
+        "Atlas",
+        "Codex",
+        "AI视觉",
+        "AIGC",
+        "AI智能体",
+        "BILIBILI_NEXT"
+      ],
+      "ai_evidence": [
+        "世界模型",
+        "AI视觉",
+        "AIGC",
+        "AI智能体"
+      ],
+      "topic": "strong"
+    },
+    {
+      "bvid": "BV1QCnL6DESC",
+      "title": "那条消息，你在脑子里发了一万遍｜世界模型",
+      "up": "PolaronX",
+      "url": "https://www.bilibili.com/video/BV1QCnL6DESC",
+      "view": 1308,
+      "reply": 0,
+      "view_per_comment": null,
+      "engagement_per_k": 0,
+      "age_hours": 15.3,
+      "velocity_per_hour": 86,
+      "saturation_per_k": 0,
+      "freshness": 1,
+      "contentious": false,
+      "score": 86,
+      "source": "search/totalrank/p1",
+      "reason": "发布 15.3h · 播放 1,308 · 评论 0 · 每评论播放 ∞ · 评论率 0.0/千 · 增速 86/h",
+      "tags": [
+        "玩具",
+        "模型制作",
+        "人工智能",
+        "模型",
+        "Minecraft",
+        "世界模型",
+        "《我的世界》",
+        "B站AI无限竞技场"
+      ],
+      "ai_evidence": [
+        "人工智能",
+        "世界模型",
+        "B站AI无限竞技场"
+      ],
+      "topic": "strong"
+    },
+    {
+      "bvid": "BV1ceJi6sEzZ",
+      "title": "LeCun世界模型创业交卷：H-JEPA开源",
+      "up": "最佳拍档大飞",
+      "url": "https://www.bilibili.com/video/BV1ceJi6sEzZ",
+      "view": 951,
+      "reply": 2,
+      "view_per_comment": 476,
+      "engagement_per_k": 2.1,
+      "age_hours": 20.6,
+      "velocity_per_hour": 46,
+      "saturation_per_k": 2.1,
+      "freshness": 1,
+      "contentious": false,
+      "score": 43,
+      "source": "search/totalrank/p1",
+      "reason": "发布 20.6h · 播放 951 · 评论 2 · 每评论播放 476 · 评论率 2.1/千 · 增速 46/h",
+      "tags": [
+        "世界模型",
+        "杨立昆",
+        "具身智能",
+        "分层规划",
+        "JEPA",
+        "上B站看视频播客",
+        "H-JEPA",
+        "Visual AntMaze",
+        "DROID",
+        "LeCun"
+      ],
+      "ai_evidence": [
+        "世界模型",
+        "杨立昆",
+        "具身智能"
+      ],
+      "topic": "strong"
+    },
+    {
+      "bvid": "BV15hn365E6F",
+      "title": "具身智能速报：优必选Thinker-WM登顶三大具身世界模型基准，宇树发布UniUni集群控制系统",
+      "up": "冰点狂欢",
+      "url": "https://www.bilibili.com/video/BV15hn365E6F",
+      "view": 597,
+      "reply": 0,
+      "view_per_comment": null,
+      "engagement_per_k": 0,
+      "age_hours": 22.6,
+      "velocity_per_hour": 26,
+      "saturation_per_k": 0,
+      "freshness": 1,
+      "contentious": false,
+      "score": 26,
+      "source": "search/pubdate/p3",
+      "reason": "发布 22.6h · 播放 597 · 评论 0 · 每评论播放 ∞ · 评论率 0.0/千 · 增速 26/h",
+      "tags": [
+        "人工智能",
+        "智能",
+        "黑科技",
+        "世界模型",
+        "具身智能",
+        "控制系统",
+        "机器学习",
+        "深度学习"
+      ],
+      "ai_evidence": [
+        "人工智能",
+        "世界模型",
+        "具身智能",
+        "机器学习"
+      ],
+      "topic": "strong"
+    },
+    {
+      "bvid": "BV159nG67EUg",
+      "title": "【Rain World】雨世界迭代器——月姐模型展示",
+      "up": "鸟章鱼",
+      "url": "https://www.bilibili.com/video/BV159nG67EUg",
+      "view": 555,
+      "reply": 4,
+      "view_per_comment": 139,
+      "engagement_per_k": 7.2,
+      "age_hours": 16.5,
+      "velocity_per_hour": 34,
+      "saturation_per_k": 7.21,
+      "freshness": 1,
+      "contentious": false,
+      "score": 21,
+      "source": "search/pubdate/p2",
+      "reason": "发布 16.5h · 播放 555 · 评论 4 · 每评论播放 139 · 评论率 7.2/千 · 增速 34/h",
+      "tags": [
+        "模型展示",
+        "建模",
+        "模型",
+        "雨世界",
+        "3d",
+        "blender",
+        "Rain World"
+      ],
+      "ai_evidence": [
+        "Rain World"
+      ],
+      "topic": "strong"
+    },
+    {
+      "bvid": "BV1hGnM6fEj7",
+      "title": "我认为奇点已经开始——Anthropic 克拉克；杨立昆：并没有【AI 大佬说 2026-10-18】",
+      "up": "AI小简",
+      "url": "https://www.bilibili.com/video/BV1hGnM6fEj7",
+      "view": 512,
+      "reply": 1,
+      "view_per_comment": 512,
+      "engagement_per_k": 2,
+      "age_hours": 30.3,
+      "velocity_per_hour": 17,
+      "saturation_per_k": 1.95,
+      "freshness": 1,
+      "contentious": false,
+      "score": 16,
+      "source": "search/totalrank/p1",
+      "reason": "发布 30.3h · 播放 512 · 评论 1 · 每评论播放 512 · 评论率 2.0/千 · 增速 17/h",
+      "tags": [
+        "AI",
+        "奇点",
+        "软件工程",
+        "人工智能",
+        "杨立昆",
+        "Anthropic",
+        "Jack Clark",
+        "AI大佬说",
+        "智能体",
+        "DeepSeek"
+      ],
+      "ai_evidence": [
+        "AI",
+        "人工智能",
+        "杨立昆",
+        "AI大佬说",
+        "智能体",
+        "DeepSeek"
+      ],
+      "topic": "strong"
+    },
+    {
+      "bvid": "BV1GbnE6ZEiT",
+      "title": "【具身智能入门】2026 别上来就学 VLA！顺序千万别学反｜ROS2 / 机器人底层 / 仿真 / VLA / 世界模型循序渐进",
+      "up": "CV前沿与深度学习",
+      "url": "https://www.bilibili.com/video/BV1GbnE6ZEiT",
+      "view": 191,
+      "reply": 1,
+      "view_per_comment": 191,
+      "engagement_per_k": 5.2,
+      "age_hours": 5.9,
+      "velocity_per_hour": 32,
+      "saturation_per_k": 5.24,
+      "freshness": 0.6,
+      "contentious": false,
+      "score": 14,
+      "source": "search/pubdate/p2",
+      "reason": "发布 5.9h · 播放 191 · 评论 1 · 每评论播放 191 · 评论率 5.2/千 · 增速 32/h",
+      "tags": [
+        "科技猎手",
+        "人工智能",
+        "AI",
+        "机器人",
+        "世界模型",
+        "ROS2",
+        "具身智能",
+        "VLA",
+        "强化学习",
+        "机器人学"
+      ],
+      "ai_evidence": [
+        "人工智能",
+        "AI",
+        "世界模型",
+        "具身智能"
+      ],
+      "topic": "strong"
+    }
+  ],
+  "note": "Top1 期望曝光最高：发布 19.0h · 播放 2,585 · 评论 7 · 每评论播放 369 · 评论率 2.7/千 · 增速 136/h"
+}

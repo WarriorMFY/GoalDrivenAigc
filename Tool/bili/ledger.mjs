@@ -392,27 +392,39 @@ async function main() {
       sensor = null;
     }
     const likeDelta = sensor && typeof sensor.delta === 'number' ? sensor.delta : null;
-    const unexplained = likeDelta === null ? null : likeDelta - sumLike;
+
+    /* 判定只认评论台账。
+       B站主页"获赞"= 视频/专栏/动态/相册的获赞，**不含评论获赞**
+       （实测：某用户单条评论 3,160 赞，主页 like_num 仅 195），因此不能用它判定本目标。 */
+    const today = dateOnly(iso());
+    let phase = 'ACTIVE';
+    if (win.start && today < win.start) phase = 'NOT_STARTED';
+    else if (win.end && today > win.end) phase = 'CLOSED';
+    let verdict;
+    if (phase === 'NOT_STARTED') verdict = 'NOT_STARTED';
+    else if (sumLike >= target) verdict = 'PASS';
+    else if (phase === 'CLOSED') verdict = 'FAILED';
+    else verdict = 'GAP';
 
     const summary = {
       t: iso(),
       window: { start: win.start ?? null, end: win.end ?? null },
+      phase,
+      verdict,
+      metric: 'comment_like_sum',
       target,
       comments_in_window: inWin.length,
       tracked,
       missing,
       sum_like: sumLike,
       gap: Math.max(0, target - sumLike),
-      like_num_delta_from_sensor: likeDelta,
-      unexplained_likes: unexplained,
-      unexplained_note:
-        unexplained === null
-          ? '无感知快照，无法交叉核对'
-          : unexplained > 0
-            ? `比台账多 ${unexplained} 赞：可能来自旧评论/动态/相册被赞，非本周评论——需人工确认`
-            : unexplained < 0
-              ? `台账比总获赞多 ${-unexplained}：可能有赞被取消，或基线漂移`
-              : '台账与总获赞一致，归因干净',
+      content_like_delta: likeDelta,
+      content_like_note:
+        likeDelta === null
+          ? '未取到内容获赞（不影响本判定）'
+          : likeDelta > 0
+            ? `内容获赞 +${likeDelta}：来自视频/动态/相册，按口径不计入评论目标`
+            : '内容获赞无变化',
       comments: inWin
         .slice()
         .sort((a, b) => String(a.posted_at).localeCompare(String(b.posted_at)))
@@ -437,10 +449,10 @@ async function main() {
 
     writeAtomic(SUMMARY, JSON.stringify(summary, null, 2) + '\n');
 
-    console.log(`[ledger] ${summary.t}  窗口 ${win.start} ~ ${win.end}`);
+    console.log(`[ledger] ${summary.t}  窗口 ${win.start} ~ ${win.end}  (${phase})`);
     console.log(`  本周评论 : ${inWin.length} 条（已定位 ${tracked}，未定位 ${missing}）`);
-    console.log(`  评论获赞 : ${sumLike} / 目标 ${target}   还差 ${summary.gap}`);
-    console.log(`  交叉核对 : 总获赞增量 ${likeDelta ?? 'n/a'} → ${summary.unexplained_note}`);
+    console.log(`  评论获赞 : ${sumLike} / 目标 ${target}   还差 ${summary.gap}   → 判定 ${verdict}`);
+    console.log(`  内容获赞 : ${summary.content_like_note}`);
     for (const c of summary.comments) {
       const mark = c.found ? '✓' : '✗';
       console.log(`   ${mark} ${String(c.like ?? '-').padStart(4)}  ${c.posted_at.slice(0, 16)}  ${c.url}`);

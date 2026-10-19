@@ -1,18 +1,20 @@
 {
-  "t": "2026-10-19T17:21:56+08:00",
+  "t": "2026-10-19T17:53:16+08:00",
   "window": {
     "start": "2026-10-19",
     "end": "2026-10-25"
   },
+  "phase": "ACTIVE",
+  "verdict": "GAP",
+  "metric": "comment_like_sum",
   "target": 50,
   "comments_in_window": 4,
   "tracked": 4,
   "missing": 0,
   "sum_like": 0,
   "gap": 50,
-  "like_num_delta_from_sensor": 0,
-  "unexplained_likes": 0,
-  "unexplained_note": "台账与总获赞一致，归因干净",
+  "content_like_delta": 0,
+  "content_like_note": "内容获赞无变化",
   "comments": [
     {
       "rpid": "317539013137",

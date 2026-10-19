@@ -117,10 +117,23 @@ function main() {
     `派生=${derived.size} 汇总=${ledger.comments_in_window}`);
   const reward = [...derived.values()].reduce((a, d) => a + (d.like || 0), 0);
   check('台账 sum_like 与事件日志一致', reward === ledger.sum_like, `派生=${reward} 汇总=${ledger.sum_like}`);
-  check('交叉核对值自洽', ledger.unexplained_likes === (ledger.like_num_delta_from_sensor - ledger.sum_like),
-    `unexplained=${ledger.unexplained_likes}`);
-  check('台账读到的感知增量与当前快照一致', ledger.like_num_delta_from_sensor === state.delta,
-    `ledger=${ledger.like_num_delta_from_sensor} state=${state.delta}`);
+
+  console.log('  --- 判定口径（必须基于评论台账）---');
+  check('判定指标为评论获赞求和', ledger.metric === 'comment_like_sum', `metric=${ledger.metric}`);
+  check('台账含 verdict 字段', ['PASS', 'GAP', 'NOT_STARTED', 'FAILED', 'UNKNOWN'].includes(ledger.verdict),
+    `verdict=${ledger.verdict}`);
+  const expectVerdict = ledger.phase === 'NOT_STARTED'
+    ? 'NOT_STARTED'
+    : ledger.sum_like >= ledger.target
+      ? 'PASS'
+      : ledger.phase === 'CLOSED' ? 'FAILED' : 'GAP';
+  check('verdict 与 sum_like 自洽', ledger.verdict === expectVerdict,
+    `verdict=${ledger.verdict} 期望=${expectVerdict}（sum_like=${ledger.sum_like} / ${ledger.target}）`);
+  check('gap = target - sum_like', ledger.gap === Math.max(0, ledger.target - ledger.sum_like),
+    `gap=${ledger.gap}`);
+  check('内容获赞增量与感知快照一致（仅作监控，不参与判定）',
+    ledger.content_like_delta === null || ledger.content_like_delta === state.delta,
+    `ledger=${ledger.content_like_delta} state=${state.delta}`);
 
   console.log('  --- 配置漂移 ---');
   check('目标与 config 一致', state.target === Number(config.target ?? 50), `state=${state.target} config=${config.target}`);
@@ -129,10 +142,9 @@ function main() {
     JSON.stringify(state.window));
 
   console.log('\n[audit] 明细');
-  console.log(`  verdict      : ${state.verdict}  (${state.phase})`);
-  console.log(`  获赞/基准    : ${state.like_num} / ${state.baseline.like_num}`);
-  console.log(`  增量(严格)   : ${state.delta} (${state.delta_strict})   还差 ${state.gap_strict}`);
-  console.log(`  台账 sum_like: ${ledger.sum_like}   unexplained: ${ledger.unexplained_likes}`);
+  console.log(`  判定         : ${ledger.verdict}  (${ledger.phase})   口径=${ledger.metric}`);
+  console.log(`  评论获赞     : ${ledger.sum_like} / ${ledger.target}   还差 ${ledger.gap}`);
+  console.log(`  内容获赞     : ${state.like_num}（基准 ${state.baseline.like_num}，增量 ${state.delta}，不计入判定）`);
   console.log(`  采样行数     : ${history.length}   评论事件: ${events.length}`);
 
   if (fail === 0) {

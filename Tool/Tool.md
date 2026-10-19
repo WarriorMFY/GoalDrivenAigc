@@ -15,20 +15,20 @@
 ## 1. 冷启动：30 秒
 
 ```powershell
-# ① 感知：目标差距。读 History\state.json 的 verdict / gap_strict
-node Tool\bili\sensor.mjs --print
-
-# ② 归因：本周评论逐条赞数 + 与总获赞交叉核对
+# ① 判定（唯一权威）：本周评论累计获赞 → 读 History\ledger.json 的 verdict
 node Tool\bili\ledger.mjs report
 
-# ③ 二者不一致时回查评论
+# ② 偏差监控（不参与判定）：账号"内容获赞"，仅用于发现异常
+node Tool\bili\sensor.mjs --print
+
+# ③ 有新评论待回查时
 node Tool\bili\ledger.mjs sync --pages 10
 
 # ④ 审计判定数据是否可信（AGENTS.md §2 的机器检查）
 node Tool\bili\audit.mjs
 ```
 
-`audit.mjs` 退出码非 0 → 判定数据不可信，**不得据此做决策**，按人在环升级。
+`ledger.json` 的 `verdict` 才是 LOOP 的判定；`state.json` 只是监控。
 
 `verdict = PASS` → 终止 LOOP。否则按 `gap_strict` 规划。
 
@@ -38,11 +38,11 @@ node Tool\bili\audit.mjs
 
 | 工具 | 职责 | 输出 |
 |---|---|---|
-| `Tool\bili\sensor.mjs` | 取账号总获赞，算增量/差距/判定 | `History\state.json`、`History\history.ndjson` |
-| `Tool\bili\ledger.mjs` | 登记评论、回查逐条赞数、交叉核对 | `History\comments.ndjson`、`History\ledger.json` |
-| `Tool\bili\audit.mjs` | 审计判定数据是否由脚本产出、是否自洽 | 无（只读，退出码 1 表示不可信） |
-| `Tool\bili\hunt.mjs` | 猎取"评论还能抢前排"的高热度 AI 视频 | `History\candidates.json` |
+| `Tool\bili\ledger.mjs` | **判定权威**：登记评论、回查逐条赞数、求本周评论获赞 | `History\comments.ndjson`、`History\ledger.json` |
+| `Tool\bili\sensor.mjs` | 监控"内容获赞"（不含评论获赞），仅用于发现异常 | `History\state.json`、`History\history.ndjson` |
+| `Tool\bili\hunt.mjs` | 猎取候选视频（热区/小播放/冷启动三种模式） | `History\candidates_*.json` |
 | `Tool\bili\proven.mjs` | 把已获赞评论收进资产库（供适配复用） | `History\proven.ndjson` |
+| `Tool\bili\audit.mjs` | 审计判定数据是否由脚本产出、是否自洽 | 无（只读，退出码 1 表示不可信） |
 | `Tool\bili\config.json` | mid / 目标 / 时间窗 / 采样参数 | 供上述两者读取 |
 
 ### sensor.mjs
@@ -91,14 +91,37 @@ node Tool\bili\ledger.mjs list
 
 ## 4. 判定规则（不要改口径）
 
-- `verdict`：`PASS` / `GAP` / `NOT_STARTED`（未进时间窗）/ `FAILED`（窗口结束未达标）/ `UNKNOWN`（取数失败）。
-- **PASS 用严格下界**：`delta_strict >= target` 才成立。`delta_strict` 取多次采样中最小者减基准，即"哪怕最陈旧的缓存节点也认账"。不要为了好看改成用最大值。
-- `reliable = false` → 说明采样极差超过目标的 20%，此指标不足以判定，**升级人工**，改用台账口径。
-- 台账交叉核对：`unexplained_likes = 总获赞增量 − 台账 sum_like`。
-  - `≈ 0` → 增长全部来自本周评论，归因干净；
-  - `> 0` → 多出的赞来自旧评论/动态/相册，**不算本周战绩**；
-  - `< 0` → 有赞被取消或基准漂移。
-- 基准存在 `state.json` 里，**不在 config**。误删 `state.json` 会丢 t0，必须重跑 `--set-baseline`（会丢历史起算点，慎用）。
+### 4.0 为什么判定只认台账
+
+**B 站主页/接口的"获赞"不含评论获赞。** 实测三例：
+
+| 用户 | 其单条评论赞数 | 主页 `like_num` | 作品构成 |
+|---|---|---|---|
+| 吴哲offical | 3,160 | **195** | 45 视频 / 4 动态 |
+| 苹果拯救了我的一生 | 937 | **426** | 1 视频 / 35 动态 |
+| 青山Aoyamakun | 563 | 65,262 | 1,071 视频 |
+
+主页"获赞"统计的是**视频 / 专栏 / 动态 / 相册等内容的获赞**。本账号 0 视频，`like_num` 恒为 4（来自 1 条图文动态），与评论获赞毫无关系。
+
+→ **`sensor.mjs` 的 `card.like_num` 不能用于本目标判定**，已降级为"内容获赞噪音监控"。
+→ 唯一判定口径：`ledger.mjs` 统计**本周发布的评论各自的赞数之和**（`comment_like_sum`）。
+
+### 4.1 判定规则
+
+- `verdict`（写在 `History\ledger.json`）：`PASS` / `GAP` / `NOT_STARTED`（未进时间窗）/ `FAILED`（窗口结束未达标）。
+- **PASS 条件**：`sum_like >= target`。没有"严格下界"之说——台账读的是每条评论的真实赞数，不是带缓存的聚合值。
+- `gap = max(0, target - sum_like)`，规划时用它。
+- 归因天然干净：台账只统计本周发布的评论，旧评论/动态的赞不会混入。
+- `content_like_delta` 仅作监控：若它突然上涨，说明有视频/动态获赞，**不计入目标**。
+- 基准与时间窗：窗口来自 `config.json`，起算日由 `posted_at` 决定；资产评论若不是本周发布，不计入。
+
+### 4.2 常见误判
+
+| 现象 | 正确处理 |
+|---|---|
+| 主页获赞涨了，评论赞没涨 | 是内容获赞，不计入；看台账 |
+| 台账 sum_like 为 0 但感觉"应该有赞" | 评论可能已沉底不入统计，或赞被取消；用 `sync` 复核 |
+| 某条评论 MISSING | 楼层被折叠/评论被删；用 `set --rpid --like` 手工补，并在备注说明 |
 
 ---
 
@@ -168,15 +191,19 @@ node -e "fetch('https://b23.tv/7GGxgvE',{redirect:'manual'}).then(r=>console.log
 
 ---
 
-## 8. 当前状态（截至 2026-10-19 16:20，**仅供参考，必须重跑确认**）
+## 8. 当前状态（截至 2026-10-19 17:55，**仅供参考，必须重跑确认**）
 
-- 账号 mid `326452892`（"为做真实的自己许诺"），粉丝 6，0 视频 / 0 专栏 / 1 动态
-- 基准获赞 **4**（`2026-10-19T15:54:51+08:00` 建立），目标 **+50**，即总获赞到 54
-- 时间窗 `2026-10-19 ~ 2026-10-25`，剩余 **6.3 天**；最后一批发布截止 **10-23**（预留 48h 发酵）
-- 台账 2 条（`BV1x8HD63EvA` 赞 0、`BV19pJY6NEuz` 赞 0），归因干净
-- **结构性发现**：B 站评论区默认按热度排序，0 赞新评论必然沉底。实测在 1,785 条评论的视频里，5 页/100 条翻不到自己的评论；只有切"最新"才在第 1 位。→ 顶层评论必须**抢早**（视频 0–3 小时内）。
-- **有效位置**：楼中楼（回复热评）。实测同一视频楼中楼回复可得 **30–144 赞**（根评论 929 赞下最高回复 144），且楼层内仅 3–5 条竞争者。台账已支持 `--root` 追踪。
-- 判定 **GAP**，`reliable=true`，噪声 NONE，`audit` 18 项通过
+- 账号 mid `326452892`（"为做真实的自己许诺"），粉丝 6，0 视频 / 0 专栏 / 1 动态 / 1 相册
+- **口径已修正**：主页"获赞 4"是内容获赞（来自 1 条图文动态），**与评论无关**；判定改用台账
+- 本周评论 **4 条**，评论获赞 **0**，判定 **GAP**，`audit` 21 项通过
+  - `BV1x8HD63EvA` 顶层（4,860 播放，位置无效）
+  - `BV19pJY6NEuz` 顶层（1,785 评论，已沉底）
+  - `BV1VMJi6GErN` 顶层 600 字（位置差且过长）
+  - `BV1VMJi6GErN` 楼中楼（root=317400656849，555 赞根评论，最有希望）
+- 资产库 2 条（8 赞、1 赞），均为上周发布，不计入本周
+- 时间窗 `2026-10-19 ~ 2026-10-25`，剩余 **6.2 天**；最后发布截止 **10-23**
+- **结构性发现**：默认按热度排序 → 顶层新评论必然沉底；楼中楼继承根评论曝光，实测可得 30–144 赞
+- **冷启动发现**：小播放视频的出赞率取决于**评论率**（实测 2,643 播放/42 评论/评论率 15.9‰ 的视频，热评 84 赞），教程类仅 1 赞
 - **题材实证**：猎手已会拉标签核验，`BV19XJi63ETA`（"你说说这ai怎么取代人类？"）标签为搞笑/奇葩，属标题党，已剔除
 - 资产库 `History\proven.ndjson` 待建（等用户在 `Tool\inbox\proven-links.md` 贴入已获赞评论链接）
 
