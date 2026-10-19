@@ -1,0 +1,132 @@
+{
+  "t": "2026-10-19T17:20:03+08:00",
+  "scanned": 197,
+  "ai_matched": 117,
+  "qualified": 3,
+  "usable": 3,
+  "topic_strong": 3,
+  "topic_title_only": 0,
+  "mode": "niche",
+  "filters": {
+    "minAgeHours": 0,
+    "maxAgeHours": 720,
+    "minView": 800,
+    "maxView": 20000,
+    "maxReply": 200,
+    "minViewPerComment": 0,
+    "top": 15
+  },
+  "sources": {
+    "popular_pages": 2,
+    "ranking": true,
+    "search": [
+      "人工智能",
+      "AI"
+    ],
+    "search_pubdate": {
+      "keywords": [
+        "人工智能",
+        "大模型"
+      ],
+      "pages": 3
+    },
+    "requests": 29
+  },
+  "candidates": [
+    {
+      "bvid": "BV1xTp26eEWh",
+      "title": "AI教母李飞飞：8万美元的私教，AI只要100美元？",
+      "up": "昌健胡说",
+      "url": "https://www.bilibili.com/video/BV1xTp26eEWh",
+      "view": 3391,
+      "reply": 3,
+      "view_per_comment": 1130,
+      "engagement_per_k": 0.9,
+      "age_hours": 120.3,
+      "velocity_per_hour": 28,
+      "saturation_per_k": 0.88,
+      "freshness": 0.2,
+      "contentious": false,
+      "score": 6,
+      "source": "related:BV1a1HW6LEXN",
+      "reason": "发布 120.3h · 播放 3,391 · 评论 3 · 每评论播放 1130 · 评论率 0.9/千 · 增速 28/h",
+      "tags": [
+        "人工智能",
+        "科技",
+        "学习",
+        "ai",
+        "李飞飞"
+      ],
+      "ai_evidence": [
+        "人工智能",
+        "ai"
+      ],
+      "topic": "strong"
+    },
+    {
+      "bvid": "BV1aoHt6WEem",
+      "title": "李飞飞揭秘AI真像！",
+      "up": "流浪客leon",
+      "url": "https://www.bilibili.com/video/BV1aoHt6WEem",
+      "view": 9940,
+      "reply": 41,
+      "view_per_comment": 242,
+      "engagement_per_k": 4.1,
+      "age_hours": 329.5,
+      "velocity_per_hour": 30,
+      "saturation_per_k": 4.12,
+      "freshness": 0.03,
+      "contentious": false,
+      "score": 1,
+      "source": "related:BV1a1HW6LEXN",
+      "reason": "发布 329.5h · 播放 9,940 · 评论 41 · 每评论播放 242 · 评论率 4.1/千 · 增速 30/h",
+      "tags": [
+        "AI",
+        "人工智能",
+        "李飞飞"
+      ],
+      "ai_evidence": [
+        "AI",
+        "人工智能"
+      ],
+      "topic": "strong"
+    },
+    {
+      "bvid": "BV1bEhJ6UEdG",
+      "title": "AI不会取代你，但会用AI的人会｜10个增长职业+5个萎缩职业，数据全解析【成长赋能vol.793】（中英校译）",
+      "up": "NaNa的英语宝藏",
+      "url": "https://www.bilibili.com/video/BV1bEhJ6UEdG",
+      "view": 4261,
+      "reply": 13,
+      "view_per_comment": 328,
+      "engagement_per_k": 3.1,
+      "age_hours": 463.4,
+      "velocity_per_hour": 9,
+      "saturation_per_k": 3.05,
+      "freshness": 0.03,
+      "contentious": true,
+      "score": 0,
+      "source": "related:BV1a1HW6LEXN",
+      "reason": "发布 463.4h · 播放 4,261 · 评论 13 · 每评论播放 328 · 评论率 3.1/千 · 增速 9/h · 争议性话题（点赞意愿高）",
+      "tags": [
+        "AI",
+        "人工智能",
+        "成长赋能",
+        "职业发展",
+        "职业",
+        "个人成长",
+        "职场建议",
+        "AI时代",
+        "认知提升",
+        "搞事业"
+      ],
+      "ai_evidence": [
+        "AI",
+        "人工智能",
+        "AI时代"
+      ],
+      "topic": "strong"
+    }
+  ],
+  "note": "Top1 期望曝光最高：发布 120.3h · 播放 3,391 · 评论 3 · 每评论播放 1130 · 评论率 0.9/千 · 增速 28/h"
+}

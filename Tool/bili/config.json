@@ -1,0 +1,33 @@
+{
+  "_comment": "感知器配置。mid 为必填项（B 站用户数字 ID）。baseline 由脚本自动记录在 Goal/state.json，不在此处维护。",
+  "mid": 326452892,
+  "target": 50,
+  "metric": "total_like_delta",
+  "window": {
+    "start": "2026-10-19",
+    "end": "2026-10-25"
+  },
+  "poll": {
+    "min_interval_seconds": 300
+  },
+  "hunt": {
+    "keywords": ["AI", "人工智能", "大模型", "GPT", "DeepSeek", "智能体", "Agent", "Sora", "通义", "豆包", "Claude", "LLM", "机器学习", "具身智能", "算力"],
+    "searchKeywords": ["人工智能", "AI"],
+    "pubdateKeywords": ["人工智能", "大模型", "AI"],
+    "pubdatePages": 3,
+    "extraKeywords": ["AI取代", "AI失业", "程序员被AI", "AI时代"],
+    "popularPages": 2,
+    "minAgeHours": 2,
+    "maxAgeHours": 120,
+    "minView": 20000,
+    "minViewPerComment": 0,
+    "nicheMinView": 800,
+    "nicheMaxView": 20000,
+    "nicheMaxReply": 200,
+    "nicheMaxAgeHours": 9000,
+    "contentiousKeywords": ["取代", "替代", "失业", "裁员", "抢走", "威胁", "泡沫", "骗", "失控", "中美", "领先", "落后", "争议", "塌房", "揭穿", "真相", "崩", "慌了", "消失", "门槛"],
+    "top": 10,
+    "throttleMs": 2000
+  },
+  "outDir": "History"
+}

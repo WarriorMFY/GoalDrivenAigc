@@ -1,0 +1,55 @@
+{
+  "t": "2026-10-19T17:11:22+08:00",
+  "ok": true,
+  "mid": 326452892,
+  "phase": "ACTIVE",
+  "verdict": "GAP",
+  "reliable": true,
+  "metric": "total_like_delta",
+  "like_num": 4,
+  "like_num_min": 4,
+  "spread": 0,
+  "samples": [
+    4,
+    4,
+    4,
+    4,
+    4
+  ],
+  "baseline": {
+    "like_num": 4,
+    "at": "2026-10-19T15:54:51+08:00",
+    "initialized": true,
+    "sampled": 5
+  },
+  "delta": 0,
+  "delta_strict": 0,
+  "delta_strict_raw": 0,
+  "target": 50,
+  "gap": 50,
+  "gap_strict": 50,
+  "noise": {
+    "n": 5,
+    "spread": 0,
+    "tolerance": 10,
+    "level": "NONE",
+    "hint": "采样一致，指标可用于判定"
+  },
+  "window": {
+    "start": "2026-10-19",
+    "end": "2026-10-25"
+  },
+  "source": "card.like_num",
+  "attribution": {
+    "metric": "total_like_delta",
+    "content": {
+      "video": 0,
+      "article": 0,
+      "opus": 1
+    },
+    "risk": "MIXED",
+    "note": "账号有 1 个自有内容，总获赞增量可能含视频/专栏/动态的赞，非纯评论获赞"
+  },
+  "baseline_initialized": false,
+  "note": "距目标还差 50 赞（严格下界 +0/50）"
+}
