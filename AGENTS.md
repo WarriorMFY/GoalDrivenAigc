@@ -14,6 +14,8 @@
     4. 感知器与执行器见 Tool\Tool.md；判定口径以 Tool.md §4 为准。
 
     5. 目录约定：Goal\ 只放 Goal.md；History\ 放全部机器产物；Tool\ 放脚本与配置。
+       根目录除上述三个目录外，仅允许 AGENTS.md 与 git 相关文件
+       （.git\、.gitignore、.gitattributes）。
 
 循环：LOOP
     感知差距[感知器] → 规划编排[规划器LLM] → 执行任务[执行器] → 重新感知
