@@ -20,17 +20,18 @@
 
     每轮必须：
       a. 跑一次感知器并在 History\ 留痕，不得只在对话里声称"涨了"；
-      b. 按 verdict 分支：
+      b. 按判定分支（判定以 History\ledger.json 的 verdict 为准；
+         History\state.json 仅作"内容获赞"监控，不得用于判定）：
            PASS        → 终止
-           GAP         → 读 gap_strict，规划并执行下一批任务
+           GAP         → 读 gap，规划并执行下一批任务
            NOT_STARTED → 等待时间窗，不执行
            FAILED      → 终止并升级（目标已不可达，由人类结算）
            UNKNOWN     → 连续失败不超过 2 次即升级
       c. 每轮检查剩余天数；剩余 1 天而 gap 仍大 → 升级，不得盲目刷量。
 
 人在环：
-    触发条件：取数连续失败 / reliable=false / unexplained_likes>0 /
-              评论 MISSING / 剩余时间不足 / 需要改变目标或判据
+    触发条件：取数连续失败 / 评论 MISSING / content_like_delta 异常上涨
+              （说明有非评论来源的赞）/ 剩余时间不足 / 需要改变目标或判据
     做法：停止执行，在回复中给出具体选项与各自代价，等待人类回答。
           人类未响应时保持挂起，不得自行决策，不得空转重试。
 
