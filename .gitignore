@@ -4,3 +4,8 @@
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# 凭据（严禁入库）
+.token
+*.token
+.env
