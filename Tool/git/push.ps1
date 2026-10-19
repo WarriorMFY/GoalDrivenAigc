@@ -32,23 +32,46 @@ $candidates += 'C:\Program Files\Git\mingw64\bin\git-credential-manager.exe'
 $candidates += 'C:\Program Files\Git\mingw64\libexec\git-core\git-credential-manager.exe'
 
 $gcm = $candidates | Where-Object { Test-Path $_ } | Select-Object -First 1
-if (-not $gcm) {
-    Write-Host "找不到 Git Credential Manager，已尝试：" -ForegroundColor Red
-    $candidates | ForEach-Object { Write-Host "  $_" }
-    exit 1
+if ($gcm) {
+    Write-Host "  使用 GCM: $gcm"
+} else {
+    Write-Host "  未找到 Git Credential Manager，将只用 gh CLI / 环境变量取凭据" -ForegroundColor Yellow
 }
-Write-Host "  使用 GCM: $gcm"
 
 Write-Host "=== 读取已保存的 GitHub 凭据 ===" -ForegroundColor Cyan
 $env:GCM_INTERACTIVE = 'false'
-$raw = ("protocol=https`nhost=github.com`n`n" | & $gcm get 2>&1) -split "`n"
+$user = $null
+$pass = $null
+$source = $null
+
+# 来源 1：Git Credential Manager（有则最快）
+$raw = @()
+if ($gcm) { $raw = ("protocol=https`nhost=github.com`n`n" | & $gcm get 2>&1) -split "`n" }
 $user = ($raw | Where-Object { $_ -match '^username=' }) -replace '^username=', ''
 $pass = ($raw | Where-Object { $_ -match '^password=' }) -replace '^password=', ''
-if (-not $user -or -not $pass) {
-    Write-Host "未取得凭据。请在普通终端运行一次 git push 完成登录。" -ForegroundColor Red
+if ($user -and $pass) { $source = 'GCM' }
+
+# 来源 2：GitHub CLI（`gh auth login` 之后凭据在 keyring，不在 GCM 里）
+if (-not $pass) {
+    $gh = (Get-Command gh -ErrorAction SilentlyContinue).Source
+    if ($gh) {
+        $tok = (& $gh auth token 2>$null) | Select-Object -First 1
+        if ($tok -and $tok -match '^(gh[pousr]_|github_pat_)') {
+            $pass = $tok.Trim()
+            $login = (& $gh api user --jq .login 2>$null) | Select-Object -First 1
+            $user = if ($login) { $login.Trim() } else { 'x-access-token' }
+            $source = 'gh CLI'
+        }
+    }
+}
+
+if (-not $pass) {
+    Write-Host "未取得凭据。任选其一完成登录后重试：" -ForegroundColor Red
+    Write-Host "  · gh auth login          （推荐，凭据存 keyring）"
+    Write-Host "  · 在普通终端跑一次 git push 完成浏览器授权"
     exit 1
 }
-Write-Host ("  账号: " + $user + "（token 已隐藏）")
+Write-Host ("  来源: " + $source + " ｜ 账号: " + $user + "（token 已隐藏）")
 
 $b64 = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes($user + ':' + $pass))
 $env:GIT_TERMINAL_PROMPT = '0'
