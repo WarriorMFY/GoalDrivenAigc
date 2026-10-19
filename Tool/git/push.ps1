@@ -18,11 +18,26 @@ $ErrorActionPreference = 'Continue'
 $repoRoot = Resolve-Path (Join-Path $PSScriptRoot '..\..')
 Set-Location $repoRoot
 
-$gcm = 'C:\Program Files\Git\mingw64\bin\git-credential-manager.exe'
-if (-not (Test-Path $gcm)) {
-    Write-Host "找不到 Git Credential Manager：$gcm" -ForegroundColor Red
+# 自动探测 Git Credential Manager（本机 git 装在 E:\SoftWare\Git，不是默认的 Program Files）
+$candidates = @()
+$gitExe = (Get-Command git -ErrorAction SilentlyContinue).Source
+if ($gitExe) {
+    $gitRoot = Split-Path (Split-Path $gitExe -Parent) -Parent   # ...\Git\cmd\git.exe -> ...\Git
+    foreach ($sub in @('mingw32\libexec\git-core', 'mingw64\libexec\git-core', 'mingw32\bin', 'mingw64\bin')) {
+        $candidates += (Join-Path $gitRoot "$sub\git-credential-manager.exe")
+        $candidates += (Join-Path $gitRoot "$sub\git-credential-manager-core.exe")
+    }
+}
+$candidates += 'C:\Program Files\Git\mingw64\bin\git-credential-manager.exe'
+$candidates += 'C:\Program Files\Git\mingw64\libexec\git-core\git-credential-manager.exe'
+
+$gcm = $candidates | Where-Object { Test-Path $_ } | Select-Object -First 1
+if (-not $gcm) {
+    Write-Host "找不到 Git Credential Manager，已尝试：" -ForegroundColor Red
+    $candidates | ForEach-Object { Write-Host "  $_" }
     exit 1
 }
+Write-Host "  使用 GCM: $gcm"
 
 Write-Host "=== 读取已保存的 GitHub 凭据 ===" -ForegroundColor Cyan
 $env:GCM_INTERACTIVE = 'false'
