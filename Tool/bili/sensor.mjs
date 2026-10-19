@@ -296,7 +296,8 @@ async function main() {
     window: { start: win.start ?? null, end: win.end ?? null },
     source: 'card.like_num',
     attribution,
-    baseline_initialized: baselineInitialized,
+    baseline_initialized: !!(baseline && baseline.initialized), /* 基准是否存在（与 baseline.initialized 同义） */
+    baseline_created_this_run: baselineInitialized,             /* 本次运行是否新建/重置基准（原字段名误用为 baseline_initialized） */
     note,
   };
 

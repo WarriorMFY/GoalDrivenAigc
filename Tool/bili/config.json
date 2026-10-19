@@ -1,8 +1,10 @@
 {
-  "_comment": "感知器配置。mid 为必填项（B 站用户数字 ID）。baseline 由脚本自动记录在 Goal/state.json，不在此处维护。",
+  "_comment": "感知器与猎手配置。mid 为必填项（B 站用户数字 ID）。baseline 由 sensor.mjs 自动写入 History/state.json（注意不是 Goal/，Goal/ 只放 Goal.md），不在此处维护。",
   "mid": 326452892,
   "target": 50,
   "metric": "total_like_delta",
+  "judge_metric": "comment_like_sum",
+  "metric_note": "metric 是 sensor 采集的'内容获赞'指标（card.like_num，不含评论获赞），仅作监控；判定口径是 judge_metric（本周评论赞数之和，由 ledger.mjs 写入 History/ledger.json）。详见 Tool.md §4。",
   "window": {
     "start": "2026-10-19",
     "end": "2026-10-25"

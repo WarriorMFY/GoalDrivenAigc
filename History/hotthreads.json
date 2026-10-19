@@ -1,0 +1,147 @@
+{
+  "t": "2026-10-19T23:25:14+08:00",
+  "source": "hotthread.mjs",
+  "version": 3,
+  "formula": "opportunity = (root_like*0.35 + reply_median*2.5 + reply_max*0.8 + reply_ge10*3 + 1) * freshness * slot；freshness=clamp(explosion/50,0.15,2.0)，explosion=根评论增速(赞/h，快照差分)或 root_like/root_age_hours 兜底，无数据时退回 clamp((view/age_hours)/5000,0.2,1.5)；slot=1/(1+0.5*max(0,rcount+1-4))",
+  "params": {
+    "golden": false,
+    "min_like": 10,
+    "max_rcount": 6,
+    "max_age": 24,
+    "min_root_velocity": 0,
+    "top": 3,
+    "include_commented": false,
+    "videos_scanned": 1,
+    "requests": 5,
+    "failures": 0,
+    "skipped_by_age": 0,
+    "snapshots_prev": 5
+  },
+  "note": "楼内回复的赞数（reply_median / reply_max / reply_ge10）比根评论赞数更能预测\"回复能不能拿到赞\"；root_velocity 是楼在爆炸的直接证据",
+  "targets": [
+    {
+      "bvid": "BV1ZLJd6MEfo",
+      "aid": 117467540101354,
+      "source": "cli",
+      "title": "【微恐预警】下一站，窗外竟然没有尽头……【AI全民制作人】",
+      "up": "AIGC-菠萝",
+      "view": 18713,
+      "reply": 34,
+      "age_hours": 3.01,
+      "traffic_per_hour": 6216.9,
+      "root_rpid": "317569609425",
+      "root_like": 80,
+      "root_replies": 1,
+      "root_uname": "你见过我的汤姆猫吗",
+      "root_text": "我想看那种在列车上完全不害怕的[笑哭]就是面无表情看外面，一边吃饭一边看外面跳脸杀也不害怕的",
+      "root_age_hours": 1.9,
+      "root_velocity": null,
+      "root_lph_avg": 42.1,
+      "reply_likes": [
+        10
+      ],
+      "reply_texts": [
+        {
+          "like": 10,
+          "text": "对对对，我感觉这种看着超绝有安全感[星星眼]"
+        }
+      ],
+      "reply_max": 10,
+      "reply_median": 10,
+      "reply_ge10": 1,
+      "reply_fetched": 1,
+      "signals": {
+        "exposure": 28,
+        "proof": 36,
+        "freshness": 0.84,
+        "slot": 1,
+        "explosion": 42.1
+      },
+      "opportunity": 54.7,
+      "note": null,
+      "url": "https://www.bilibili.com/video/BV1ZLJd6MEfo/#reply317569609425",
+      "thread_url": "https://www.bilibili.com/video/BV1ZLJd6MEfo/?comment_on=1&comment_root_id=317569609425"
+    },
+    {
+      "bvid": "BV1ZLJd6MEfo",
+      "aid": 117467540101354,
+      "source": "cli",
+      "title": "【微恐预警】下一站，窗外竟然没有尽头……【AI全民制作人】",
+      "up": "AIGC-菠萝",
+      "view": 18713,
+      "reply": 34,
+      "age_hours": 3.01,
+      "traffic_per_hour": 6216.9,
+      "root_rpid": "321242583904",
+      "root_like": 41,
+      "root_replies": 1,
+      "root_uname": "TheMightyHood",
+      "root_text": "能在这种环境下养护铁路的工人怕不是神挡杀神佛挡杀佛[doge]",
+      "root_age_hours": 1.4,
+      "root_velocity": null,
+      "root_lph_avg": 29.3,
+      "reply_likes": [
+        8
+      ],
+      "reply_texts": [
+        {
+          "like": 8,
+          "text": "[doge]怕不是列车开到哪 哪有铁路"
+        }
+      ],
+      "reply_max": 8,
+      "reply_median": 8,
+      "reply_ge10": 0,
+      "reply_fetched": 1,
+      "signals": {
+        "exposure": 14.4,
+        "proof": 26.4,
+        "freshness": 0.59,
+        "slot": 1,
+        "explosion": 29.3
+      },
+      "opportunity": 24.5,
+      "note": null,
+      "url": "https://www.bilibili.com/video/BV1ZLJd6MEfo/#reply321242583904",
+      "thread_url": "https://www.bilibili.com/video/BV1ZLJd6MEfo/?comment_on=1&comment_root_id=321242583904"
+    },
+    {
+      "bvid": "BV1ZLJd6MEfo",
+      "aid": 117467540101354,
+      "source": "cli",
+      "title": "【微恐预警】下一站，窗外竟然没有尽头……【AI全民制作人】",
+      "up": "AIGC-菠萝",
+      "view": 18713,
+      "reply": 34,
+      "age_hours": 3.01,
+      "traffic_per_hour": 6216.9,
+      "root_rpid": "317563918241",
+      "root_like": 78,
+      "root_replies": 0,
+      "root_uname": "欧阳问之",
+      "root_text": "不是最后那个是什么高科技呀？你这以前逗我玩呢[笑哭]气笑了",
+      "root_age_hours": 2.8,
+      "root_velocity": null,
+      "root_lph_avg": 27.9,
+      "reply_likes": [],
+      "reply_texts": [],
+      "reply_max": 0,
+      "reply_median": 0,
+      "reply_ge10": 0,
+      "reply_fetched": 0,
+      "signals": {
+        "exposure": 27.3,
+        "proof": 0,
+        "freshness": 0.56,
+        "slot": 1,
+        "explosion": 27.9
+      },
+      "opportunity": 15.8,
+      "note": "楼内无回复",
+      "url": "https://www.bilibili.com/video/BV1ZLJd6MEfo/#reply317563918241",
+      "thread_url": "https://www.bilibili.com/video/BV1ZLJd6MEfo/?comment_on=1&comment_root_id=317563918241"
+    }
+  ],
+  "skipped": [],
+  "failures": []
+}

@@ -15,8 +15,10 @@
  *
  * 用法：
  *   node Tool/bili/ledger.mjs add --bvid BV1xx --rpid 123456789 [--text "评论内容"]
+ *        可选归因标签：--style short-punch|long-arg|question|info  --thread-size 264（根评论当时赞数）
  *   node Tool/bili/ledger.mjs sync [--pages 10]      # 回查所有登记评论的赞数
  *   node Tool/bili/ledger.mjs set --rpid 123 --like 7 # 手工修正（页面肉眼可见时）
+ *   node Tool/bili/ledger.mjs label --rpid 123 --style short-punch --thread-size 264  # 补归因标签（不动赞数）
  *   node Tool/bili/ledger.mjs report                 # 汇总：sum_like / 未解释增量
  *   node Tool/bili/ledger.mjs list
  *
@@ -193,6 +195,14 @@ async function scanReply(oid, root, targets, maxPages) {
 }
 
 /* ---------------- 台账派生 ---------------- */
+
+/* 评论已存活小时数：给"赞是多久攒起来的"一个分母，也用于按风格归因 */
+function ageHours(at) {
+  const ms = Date.now() - Date.parse(at);
+  if (!Number.isFinite(ms) || ms <= 0) return null;
+  return Math.round(ms / 36000) / 100;
+}
+
 function derive() {
   const events = readEvents();
   const map = new Map();
@@ -200,12 +210,16 @@ function derive() {
     const id = String(ev.rpid ?? '');
     if (!id) continue;
     if (ev.type === 'add') {
+      /* add = 登记/重置，与 audit.mjs 的独立派生保持同一语义（audit 逐事件重放，遇到 add 就把该 rpid 清空）。
+         只想补标签时用 `label` 命令，**不要重复 add**，否则赞数历史会被重置。 */
       map.set(id, {
         rpid: id,
         oid: ev.oid ?? null,
         bvid: ev.bvid ?? null,
         root: ev.root ?? null,
         text: ev.text ?? null,
+        style: ev.style ?? null,
+        thread_size: ev.thread_size ?? null,
         posted_at: ev.posted_at ?? ev.t,
         like: null,
         found: false,
@@ -214,6 +228,13 @@ function derive() {
         checks: 0,
         history: [],
       });
+    } else if (ev.type === 'label') {
+      /* 只补归因标签/修正 posted_at，不动赞数历史；对 audit 的派生无影响（label 事件不带 like） */
+      const e = map.get(id);
+      if (!e) continue;
+      if (ev.style) e.style = ev.style;
+      if (ev.thread_size !== undefined && ev.thread_size !== null) e.thread_size = ev.thread_size;
+      if (ev.at) e.posted_at = ev.at;
     } else if (ev.type === 'sync' || ev.type === 'set') {
       const e = map.get(id);
       if (!e) continue;
@@ -260,6 +281,17 @@ async function main() {
     const text = typeof opt('text') === 'string' ? opt('text') : null;
     const posted_at = typeof opt('at') === 'string' ? opt('at') : iso();
 
+    /* 归因标签（可选，非判据）：只为事后回答"什么样的评论能拿到赞"。
+       --style     建议值 short-punch（短梗）| long-arg（长论证）| question（提问）| info（补充信息）
+       --thread-size  发布时根评论的赞数，用于区分"蹭大热楼"与"蹭小楼" */
+    const styleArg = opt('style');
+    const style = typeof styleArg === 'string' ? styleArg.trim().slice(0, 24) : null;
+    const tsArg = opt('thread-size');
+    const threadSize =
+      typeof tsArg === 'boolean' || tsArg === null || Number.isNaN(Number(tsArg))
+        ? null
+        : Number(tsArg);
+
     /* 自动判定层级：把 rpid 当作 root 去查，若返回的 root.rpid 就是它本身 → 顶层评论；
        否则说明它挂在某个楼层下，真正的 root 是返回值。 */
     let root = typeof opt('root') === 'string' ? opt('root') : null;
@@ -288,10 +320,17 @@ async function main() {
       process.exitCode = 4;
     }
 
-    const ev = { type: 'add', t: iso(), rpid, oid: aid, bvid, root, kind: detected, text, posted_at, title };
+    const existing = derive().find((e) => e.rpid === rpid);
+    if (existing) {
+      console.log(`⚠ rpid=${rpid} 已经登记过（like=${existing.like ?? '-'}）。重复 add 会**重置**它的赞数历史。`);
+      console.log(`  只想补归因标签请改用：node Tool\\bili\\ledger.mjs label --rpid ${rpid} --style <风格> --thread-size <数字>`);
+    }
+
+    const ev = { type: 'add', t: iso(), rpid, oid: aid, bvid, root, kind: detected, text, posted_at, title, style, thread_size: threadSize };
     appendEvent(ev);
     console.log(`[ledger] 已登记 rpid=${rpid}  ${bvid} (aid=${aid})  《${String(title).slice(0, 30)}》`);
     console.log(`         层级：${detected === 'reply' ? '楼中楼（root=' + root + '）' : detected === 'top' ? '顶层评论' : '未探测成功'}`);
+    if (style || threadSize !== null) console.log(`         标签：style=${style ?? '-'} thread_size=${threadSize ?? '-'}`);
     console.log(`         评论链接：https://www.bilibili.com/video/${bvid}/#reply${rpid}`);
     console.log(`         ⚠ 请尽快执行 sync，越晚越可能沉底找不到`);
     process.exit(rootGiven && detected === 'top' ? 4 : 0);
@@ -378,6 +417,34 @@ async function main() {
     process.exit(0);
   }
 
+  if (cmd === 'label') {
+    /* 补归因标签：不取网络、不动赞数历史。用于给旧评论回填 style / thread_size */
+    const rpid = opt('rpid');
+    if (typeof rpid !== 'string' || !/^\d+$/.test(rpid)) {
+      console.error('[ledger] 缺少或非法 --rpid');
+      process.exit(3);
+    }
+    const styleArg = opt('style');
+    const style = typeof styleArg === 'string' ? styleArg.trim().slice(0, 24) : null;
+    const tsArg = opt('thread-size');
+    const threadSize =
+      typeof tsArg === 'boolean' || tsArg === null || Number.isNaN(Number(tsArg)) ? null : Number(tsArg);
+    const atArg = opt('at');
+    const at = typeof atArg === 'string' ? atArg : null;
+    if (!style && threadSize === null && !at) {
+      console.error('[ledger] label 至少需要 --style / --thread-size / --at 之一');
+      process.exit(3);
+    }
+    const all = derive();
+    if (!all.some((e) => e.rpid === rpid)) {
+      console.error(`[ledger] 台账里没有 rpid=${rpid}，先 add`);
+      process.exit(3);
+    }
+    appendEvent({ type: 'label', t: iso(), rpid, style, thread_size: threadSize, at });
+    console.log(`[ledger] 已补标签 rpid=${rpid}  style=${style ?? '-'}  thread_size=${threadSize ?? '-'}  posted_at=${at ?? '(不变)'}`);
+    process.exit(0);
+  }
+
   if (cmd === 'report' || cmd === 'list') {
     const entries = derive();
     const inWin = entries.filter((e) => inWindow(e.posted_at));
@@ -432,6 +499,14 @@ async function main() {
           rpid: e.rpid, bvid: e.bvid, posted_at: e.posted_at,
           like: e.like, found: e.found, checks: e.checks,
           last_check_at: e.last_check_at,
+          root: e.root ?? null,
+          style: e.style ?? null,
+          thread_size: e.thread_size ?? null,
+          age_hours: ageHours(e.posted_at),
+          like_per_hour:
+            e.like != null && ageHours(e.posted_at)
+              ? Math.round((e.like / ageHours(e.posted_at)) * 100) / 100
+              : null,
           url: e.bvid ? `https://www.bilibili.com/video/${e.bvid}/#reply${e.rpid}` : null,
           text: e.text,
         })),
@@ -455,7 +530,7 @@ async function main() {
     console.log(`  内容获赞 : ${summary.content_like_note}`);
     for (const c of summary.comments) {
       const mark = c.found ? '✓' : '✗';
-      console.log(`   ${mark} ${String(c.like ?? '-').padStart(4)}  ${c.posted_at.slice(0, 16)}  ${c.url}`);
+      console.log(`   ${mark} ${String(c.like ?? '-').padStart(4)}  ${c.posted_at.slice(0, 16)}  ${c.style ? '[' + c.style + '] ' : ''}${c.url}`);
     }
     console.log(`  汇总已写入 ${path.relative(ROOT, SUMMARY)}`);
     process.exit(0);

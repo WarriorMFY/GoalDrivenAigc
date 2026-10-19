@@ -113,9 +113,21 @@ function main() {
       if (ev.found !== undefined) d.found = !!ev.found;
     }
   }
-  check('台账明细数 = comments.ndjson 派生的评论数', derived.size === ledger.comments_in_window,
-    `派生=${derived.size} 汇总=${ledger.comments_in_window}`);
-  const reward = [...derived.values()].reduce((a, d) => a + (d.like || 0), 0);
+  /* 口径对齐：ledger.mjs 只统计"窗口内发布"的评论，所以这里的独立派生也按窗口过滤。
+     否则窗口外补登的评论会让派生数 > comments_in_window，audit 误报 FAIL（DECISIONS D11）。
+     注意：这**不放宽**严格性——比对的是同一口径下的条数与总和。 */
+  const winStart = ledger.window && ledger.window.start;
+  const winEnd = ledger.window && ledger.window.end;
+  const inWin = (at) => {
+    const d = String(at).slice(0, 10);
+    if (winStart && d < winStart) return false;
+    if (winEnd && d > winEnd) return false;
+    return true;
+  };
+  const derivedInWin = [...derived.values()].filter((d) => inWin(d.posted_at));
+  check('台账明细数 = comments.ndjson 派生的窗口内评论数', derivedInWin.length === ledger.comments_in_window,
+    `派生=${derivedInWin.length}（事件共 ${derived.size} 条，窗口外 ${derived.size - derivedInWin.length}） 汇总=${ledger.comments_in_window}`);
+  const reward = derivedInWin.reduce((a, d) => a + (d.like || 0), 0);
   check('台账 sum_like 与事件日志一致', reward === ledger.sum_like, `派生=${reward} 汇总=${ledger.sum_like}`);
 
   console.log('  --- 判定口径（必须基于评论台账）---');

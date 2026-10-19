@@ -1,5 +1,5 @@
 {
-  "t": "2026-10-19T17:53:14+08:00",
+  "t": "2026-10-19T23:40:13+08:00",
   "ok": true,
   "mid": 326452892,
   "phase": "ACTIVE",
@@ -52,6 +52,7 @@
     "risk": "MIXED",
     "note": "账号有 1 个自有内容，总获赞增量可能含视频/专栏/动态的赞，非纯评论获赞"
   },
-  "baseline_initialized": false,
+  "baseline_initialized": true,
+  "baseline_created_this_run": false,
   "note": "距目标还差 50 赞（严格下界 +0/50）"
 }
