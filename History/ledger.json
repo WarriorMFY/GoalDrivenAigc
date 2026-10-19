@@ -1,5 +1,5 @@
 {
-  "t": "2026-10-19T17:53:16+08:00",
+  "t": "2026-10-19T17:58:39+08:00",
   "window": {
     "start": "2026-10-19",
     "end": "2026-10-25"
@@ -8,8 +8,8 @@
   "verdict": "GAP",
   "metric": "comment_like_sum",
   "target": 50,
-  "comments_in_window": 4,
-  "tracked": 4,
+  "comments_in_window": 6,
+  "tracked": 6,
   "missing": 0,
   "sum_like": 0,
   "gap": 50,
@@ -22,8 +22,8 @@
       "posted_at": "2026-10-19T16:00:21+08:00",
       "like": 0,
       "found": true,
-      "checks": 5,
-      "last_check_at": "2026-10-19T17:11:21+08:00",
+      "checks": 6,
+      "last_check_at": "2026-10-19T17:58:34+08:00",
       "url": "https://www.bilibili.com/video/BV1x8HD63EvA/#reply317539013137",
       "text": "同志们! 去让AI作为工具充分武装你自己! 去发挥个人能动性探索未知领域! 去尽可能帮助更多的人! 以此来实现个人价值! 这样世界将会越来越好![打call]"
     },
@@ -33,8 +33,8 @@
       "posted_at": "2026-10-19T16:40:41+08:00",
       "like": 0,
       "found": true,
-      "checks": 3,
-      "last_check_at": "2026-10-19T17:11:21+08:00",
+      "checks": 4,
+      "last_check_at": "2026-10-19T17:58:35+08:00",
       "url": "https://www.bilibili.com/video/BV19pJY6NEuz/#reply317541941313",
       "text": "从来如此，便对吗最狠的地方在于：问这话的人，往往还没到需要规矩保护他的年纪。[笑哭]"
     },
@@ -44,8 +44,8 @@
       "posted_at": "2026-10-19T17:06:26+08:00",
       "like": 0,
       "found": true,
-      "checks": 2,
-      "last_check_at": "2026-10-19T17:11:21+08:00",
+      "checks": 3,
+      "last_check_at": "2026-10-19T17:58:35+08:00",
       "url": "https://www.bilibili.com/video/BV1VMJi6GErN/#reply317543883249",
       "text": "AI 不抢工作，会用 AI 的人抢。这话十年前是鸡汤，现在是招聘 JD。（后接长篇论述）"
     },
@@ -55,10 +55,32 @@
       "posted_at": "2026-10-19T17:11:00+08:00",
       "like": 0,
       "found": true,
-      "checks": 1,
-      "last_check_at": "2026-10-19T17:11:22+08:00",
+      "checks": 2,
+      "last_check_at": "2026-10-19T17:58:36+08:00",
       "url": "https://www.bilibili.com/video/BV1VMJi6GErN/#reply317544324625",
       "text": "AI 不抢工作，会用 AI 的人抢！"
+    },
+    {
+      "rpid": "317547660609",
+      "bvid": "BV15hn365E6F",
+      "posted_at": "2026-10-19T17:49:58+08:00",
+      "like": 0,
+      "found": true,
+      "checks": 1,
+      "last_check_at": "2026-10-19T17:58:36+08:00",
+      "url": "https://www.bilibili.com/video/BV15hn365E6F/#reply317547660609",
+      "text": "这类榜单最怕仿真里无敌、真机上抓瞎。如果 WorldOlymp 评测没把 sim-to-real 差距单列出来，排名第一的说服力有限。"
+    },
+    {
+      "rpid": "317547846081",
+      "bvid": "BV1ceJi6sEzZ",
+      "posted_at": "2026-10-19T17:50:46+08:00",
+      "like": 0,
+      "found": true,
+      "checks": 1,
+      "last_check_at": "2026-10-19T17:58:36+08:00",
+      "url": "https://www.bilibili.com/video/BV1ceJi6sEzZ/#reply317547846081",
+      "text": "分层做预测这步是对的：高层在潜空间定计划、低层在时间尺度上执行，把想和做解耦。难的是每层预测误差怎么向上反馈。"
     }
   ]
 }
