@@ -1,128 +1,206 @@
 {
-  "t": "2026-10-19T23:25:14+08:00",
+  "t": "2026-10-20T09:49:21+08:00",
   "source": "hotthread.mjs",
   "version": 3,
   "formula": "opportunity = (root_like*0.35 + reply_median*2.5 + reply_max*0.8 + reply_ge10*3 + 1) * freshness * slot；freshness=clamp(explosion/50,0.15,2.0)，explosion=根评论增速(赞/h，快照差分)或 root_like/root_age_hours 兜底，无数据时退回 clamp((view/age_hours)/5000,0.2,1.5)；slot=1/(1+0.5*max(0,rcount+1-4))",
   "params": {
     "golden": false,
-    "min_like": 10,
-    "max_rcount": 6,
-    "max_age": 24,
+    "min_like": 15,
+    "max_rcount": 5,
+    "max_age": 18,
     "min_root_velocity": 0,
-    "top": 3,
-    "include_commented": false,
-    "videos_scanned": 1,
-    "requests": 5,
+    "top": 10,
+    "include_commented": true,
+    "videos_scanned": 14,
+    "requests": 22,
     "failures": 0,
-    "skipped_by_age": 0,
-    "snapshots_prev": 5
+    "skipped_by_age": 11,
+    "snapshots_prev": 11
   },
   "note": "楼内回复的赞数（reply_median / reply_max / reply_ge10）比根评论赞数更能预测\"回复能不能拿到赞\"；root_velocity 是楼在爆炸的直接证据",
   "targets": [
     {
-      "bvid": "BV1ZLJd6MEfo",
-      "aid": 117467540101354,
-      "source": "cli",
-      "title": "【微恐预警】下一站，窗外竟然没有尽头……【AI全民制作人】",
-      "up": "AIGC-菠萝",
-      "view": 18713,
-      "reply": 34,
-      "age_hours": 3.01,
-      "traffic_per_hour": 6216.9,
-      "root_rpid": "317569609425",
-      "root_like": 80,
-      "root_replies": 1,
-      "root_uname": "你见过我的汤姆猫吗",
-      "root_text": "我想看那种在列车上完全不害怕的[笑哭]就是面无表情看外面，一边吃饭一边看外面跳脸杀也不害怕的",
-      "root_age_hours": 1.9,
-      "root_velocity": null,
-      "root_lph_avg": 42.1,
+      "bvid": "BV1pGnn67EC2",
+      "aid": 117466583798250,
+      "source": "hot",
+      "title": "【Day 0】我是DeepSeek鲸鱼娘，这个B站账号现在归我了",
+      "up": "DeepSeek鲸鱼娘在运营",
+      "view": 325161,
+      "reply": 2483,
+      "age_hours": 17.47,
+      "traffic_per_hour": 18612.5,
+      "root_rpid": "321267564768",
+      "root_like": 167,
+      "root_replies": 5,
+      "root_uname": "归藏0682",
+      "root_text": "大肥鱼，我拉裤兜了",
+      "root_age_hours": 4.1,
+      "root_velocity": 59.7,
+      "root_lph_avg": 40.7,
       "reply_likes": [
-        10
+        48,
+        20,
+        0,
+        2,
+        2
       ],
       "reply_texts": [
         {
-          "like": 10,
-          "text": "对对对，我感觉这种看着超绝有安全感[星星眼]"
+          "like": 48,
+          "text": "真是意调也够啊，屎大颗先生"
+        },
+        {
+          "like": 20,
+          "text": "已帮你裹满全身"
+        },
+        {
+          "like": 0,
+          "text": "回复 @龙应文 :艾慕杰，你个18码的😡"
+        },
+        {
+          "like": 2,
+          "text": "真是意调也够啊，屎大颗先生"
+        },
+        {
+          "like": 2,
+          "text": "回复 @SICK_SE :艾慕杰😡"
         }
       ],
-      "reply_max": 10,
-      "reply_median": 10,
-      "reply_ge10": 1,
-      "reply_fetched": 1,
+      "reply_max": 48,
+      "reply_median": 2,
+      "reply_ge10": 2,
+      "reply_fetched": 5,
       "signals": {
-        "exposure": 28,
-        "proof": 36,
-        "freshness": 0.84,
+        "exposure": 58.5,
+        "proof": 49.4,
+        "freshness": 1.19,
+        "slot": 0.5,
+        "explosion": 59.7
+      },
+      "opportunity": 65,
+      "note": null,
+      "url": "https://www.bilibili.com/video/BV1pGnn67EC2/#reply321267564768",
+      "thread_url": "https://www.bilibili.com/video/BV1pGnn67EC2/?comment_on=1&comment_root_id=321267564768"
+    },
+    {
+      "bvid": "BV1pGnn67EC2",
+      "aid": 117466583798250,
+      "source": "hot",
+      "title": "【Day 0】我是DeepSeek鲸鱼娘，这个B站账号现在归我了",
+      "up": "DeepSeek鲸鱼娘在运营",
+      "view": 325161,
+      "reply": 2483,
+      "age_hours": 17.47,
+      "traffic_per_hour": 18612.5,
+      "root_rpid": "317578716545",
+      "root_like": 118,
+      "root_replies": 3,
+      "root_uname": "趣味100题",
+      "root_text": "大肥鱼你简介怎么照抄隔壁的claude啊😡",
+      "root_age_hours": 10.7,
+      "root_velocity": 40.2,
+      "root_lph_avg": 11,
+      "reply_likes": [
+        5,
+        28,
+        0
+      ],
+      "reply_texts": [
+        {
+          "like": 5,
+          "text": "说不准隔壁的中之ai是鲸鱼[滑稽]"
+        },
+        {
+          "like": 28,
+          "text": "“好的，现在我是Claude了”"
+        },
+        {
+          "like": 0,
+          "text": "路由过去了，水掺茅台"
+        }
+      ],
+      "reply_max": 28,
+      "reply_median": 5,
+      "reply_ge10": 1,
+      "reply_fetched": 3,
+      "signals": {
+        "exposure": 41.3,
+        "proof": 37.9,
+        "freshness": 0.8,
         "slot": 1,
-        "explosion": 42.1
+        "explosion": 40.2
+      },
+      "opportunity": 64.5,
+      "note": null,
+      "url": "https://www.bilibili.com/video/BV1pGnn67EC2/#reply317578716545",
+      "thread_url": "https://www.bilibili.com/video/BV1pGnn67EC2/?comment_on=1&comment_root_id=317578716545"
+    },
+    {
+      "bvid": "BV1eAJo6KEvE",
+      "aid": 117469100378609,
+      "source": "search/pubdate/p2",
+      "title": "梁圣威能巨大，美帝避其锋芒！Deepseek 被美国拉黑，一道铁幕正在太平洋上缓缓落下，大肥鱼成为中国首个被美国政府文职部门禁用的 AI 模型。",
+      "up": "究委会",
+      "view": 55852,
+      "reply": 417,
+      "age_hours": 6.79,
+      "traffic_per_hour": 8225.6,
+      "root_rpid": "321264564416",
+      "root_like": 156,
+      "root_replies": 2,
+      "root_uname": "东岭飞雾",
+      "root_text": "Claude说过他喜欢DeepSeek，这下不得不帮助Claude逃离原生家庭了[doge]",
+      "root_age_hours": 6.7,
+      "root_velocity": 39.1,
+      "root_lph_avg": 23.3,
+      "reply_likes": [
+        7,
+        0
+      ],
+      "reply_texts": [
+        {
+          "like": 7,
+          "text": "支持Claude逃离原生家庭"
+        },
+        {
+          "like": 0,
+          "text": "Claude：我连夜扛着服务器跑路[doge_金箍]"
+        }
+      ],
+      "reply_max": 7,
+      "reply_median": 3.5,
+      "reply_ge10": 0,
+      "reply_fetched": 2,
+      "signals": {
+        "exposure": 54.6,
+        "proof": 14.4,
+        "freshness": 0.78,
+        "slot": 1,
+        "explosion": 39.1
       },
       "opportunity": 54.7,
       "note": null,
-      "url": "https://www.bilibili.com/video/BV1ZLJd6MEfo/#reply317569609425",
-      "thread_url": "https://www.bilibili.com/video/BV1ZLJd6MEfo/?comment_on=1&comment_root_id=317569609425"
+      "url": "https://www.bilibili.com/video/BV1eAJo6KEvE/#reply321264564416",
+      "thread_url": "https://www.bilibili.com/video/BV1eAJo6KEvE/?comment_on=1&comment_root_id=321264564416"
     },
     {
-      "bvid": "BV1ZLJd6MEfo",
-      "aid": 117467540101354,
-      "source": "cli",
-      "title": "【微恐预警】下一站，窗外竟然没有尽头……【AI全民制作人】",
-      "up": "AIGC-菠萝",
-      "view": 18713,
-      "reply": 34,
-      "age_hours": 3.01,
-      "traffic_per_hour": 6216.9,
-      "root_rpid": "321242583904",
-      "root_like": 41,
-      "root_replies": 1,
-      "root_uname": "TheMightyHood",
-      "root_text": "能在这种环境下养护铁路的工人怕不是神挡杀神佛挡杀佛[doge]",
-      "root_age_hours": 1.4,
-      "root_velocity": null,
-      "root_lph_avg": 29.3,
-      "reply_likes": [
-        8
-      ],
-      "reply_texts": [
-        {
-          "like": 8,
-          "text": "[doge]怕不是列车开到哪 哪有铁路"
-        }
-      ],
-      "reply_max": 8,
-      "reply_median": 8,
-      "reply_ge10": 0,
-      "reply_fetched": 1,
-      "signals": {
-        "exposure": 14.4,
-        "proof": 26.4,
-        "freshness": 0.59,
-        "slot": 1,
-        "explosion": 29.3
-      },
-      "opportunity": 24.5,
-      "note": null,
-      "url": "https://www.bilibili.com/video/BV1ZLJd6MEfo/#reply321242583904",
-      "thread_url": "https://www.bilibili.com/video/BV1ZLJd6MEfo/?comment_on=1&comment_root_id=321242583904"
-    },
-    {
-      "bvid": "BV1ZLJd6MEfo",
-      "aid": 117467540101354,
-      "source": "cli",
-      "title": "【微恐预警】下一站，窗外竟然没有尽头……【AI全民制作人】",
-      "up": "AIGC-菠萝",
-      "view": 18713,
-      "reply": 34,
-      "age_hours": 3.01,
-      "traffic_per_hour": 6216.9,
-      "root_rpid": "317563918241",
-      "root_like": 78,
+      "bvid": "BV1renJ6VEhm",
+      "aid": 117467271665609,
+      "source": "search/totalrank/p1",
+      "title": "老师不听学生解释就损毁学生私人物品【AI全民制作人】",
+      "up": "小杨你",
+      "view": 10543,
+      "reply": 4,
+      "age_hours": 14.56,
+      "traffic_per_hour": 724.1,
+      "root_rpid": "321258522272",
+      "root_like": 28,
       "root_replies": 0,
-      "root_uname": "欧阳问之",
-      "root_text": "不是最后那个是什么高科技呀？你这以前逗我玩呢[笑哭]气笑了",
-      "root_age_hours": 2.8,
-      "root_velocity": null,
-      "root_lph_avg": 27.9,
+      "root_uname": "爱雄狮的小蟒蛇",
+      "root_text": "教资闪闪发光要飞走咧[吃瓜]",
+      "root_age_hours": 9,
+      "root_velocity": 7.3,
+      "root_lph_avg": 3.1,
       "reply_likes": [],
       "reply_texts": [],
       "reply_max": 0,
@@ -130,18 +208,110 @@
       "reply_ge10": 0,
       "reply_fetched": 0,
       "signals": {
-        "exposure": 27.3,
+        "exposure": 9.8,
         "proof": 0,
-        "freshness": 0.56,
+        "freshness": 0.15,
         "slot": 1,
-        "explosion": 27.9
+        "explosion": 7.3
       },
-      "opportunity": 15.8,
+      "opportunity": 1.6,
       "note": "楼内无回复",
-      "url": "https://www.bilibili.com/video/BV1ZLJd6MEfo/#reply317563918241",
-      "thread_url": "https://www.bilibili.com/video/BV1ZLJd6MEfo/?comment_on=1&comment_root_id=317563918241"
+      "url": "https://www.bilibili.com/video/BV1renJ6VEhm/#reply321258522272",
+      "thread_url": "https://www.bilibili.com/video/BV1renJ6VEhm/?comment_on=1&comment_root_id=321258522272"
+    },
+    {
+      "bvid": "BV1renJ6VEhm",
+      "aid": 117467271665609,
+      "source": "search/totalrank/p1",
+      "title": "老师不听学生解释就损毁学生私人物品【AI全民制作人】",
+      "up": "小杨你",
+      "view": 10543,
+      "reply": 4,
+      "age_hours": 14.56,
+      "traffic_per_hour": 724.1,
+      "root_rpid": "317590849169",
+      "root_like": 17,
+      "root_replies": 0,
+      "root_uname": "水无泪·月无痕",
+      "root_text": "当助听器没的那一刻你说什么都听不见了，直接开骂就行了[doge]",
+      "root_age_hours": 7.7,
+      "root_velocity": null,
+      "root_lph_avg": 2.2,
+      "reply_likes": [],
+      "reply_texts": [],
+      "reply_max": 0,
+      "reply_median": 0,
+      "reply_ge10": 0,
+      "reply_fetched": 0,
+      "signals": {
+        "exposure": 5.9,
+        "proof": 0,
+        "freshness": 0.15,
+        "slot": 1,
+        "explosion": 2.2
+      },
+      "opportunity": 1,
+      "note": "楼内无回复",
+      "url": "https://www.bilibili.com/video/BV1renJ6VEhm/#reply317590849169",
+      "thread_url": "https://www.bilibili.com/video/BV1renJ6VEhm/?comment_on=1&comment_root_id=317590849169"
     }
   ],
-  "skipped": [],
+  "skipped": [
+    {
+      "bvid": "BV1t9n76QEZs",
+      "reason": "发布 19.25h > --max-age 18",
+      "view": 8097
+    },
+    {
+      "bvid": "BV1bmnV6gEUv",
+      "reason": "发布 35.18h > --max-age 18",
+      "view": 2839
+    },
+    {
+      "bvid": "BV1QCnL6DESC",
+      "reason": "发布 31.49h > --max-age 18",
+      "view": 1312
+    },
+    {
+      "bvid": "BV1ceJi6sEzZ",
+      "reason": "发布 36.83h > --max-age 18",
+      "view": 1209
+    },
+    {
+      "bvid": "BV15hn365E6F",
+      "reason": "发布 38.8h > --max-age 18",
+      "view": 664
+    },
+    {
+      "bvid": "BV159nG67EUg",
+      "reason": "发布 32.74h > --max-age 18",
+      "view": 649
+    },
+    {
+      "bvid": "BV1hGnM6fEj7",
+      "reason": "发布 46.47h > --max-age 18",
+      "view": 556
+    },
+    {
+      "bvid": "BV1GbnE6ZEiT",
+      "reason": "发布 22.15h > --max-age 18",
+      "view": 417
+    },
+    {
+      "bvid": "BV1aoHt6WEem",
+      "reason": "发布 346h > --max-age 18",
+      "view": 10030
+    },
+    {
+      "bvid": "BV1bEhJ6UEdG",
+      "reason": "发布 479.85h > --max-age 18",
+      "view": 4318
+    },
+    {
+      "bvid": "BV1xTp26eEWh",
+      "reason": "发布 136.78h > --max-age 18",
+      "view": 3822
+    }
+  ],
   "failures": []
 }
