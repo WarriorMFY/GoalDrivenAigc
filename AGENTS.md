@@ -3,8 +3,7 @@
 ## 全局规则
 1. **只能通过 Tool\ 下的脚本改变和感知世界**。判定数据必须由脚本产出，一次性命令只允许只读探查。
 2. **Goal\Goal.md 仅用户可写，你只读**。目标、判据、时间窗不得修改。
-3. **目录约定**：Goal\ 只放 Goal.md；History\ 放全部机器产物（**根级只留 history.md 唯一入口**，其余按 index/snapshots/stream/events/runs/reports/checks 分类）；Tool\ 放脚本与配置（**根级只留 Tool.md 索引**，每个工具的实践在同名 .md 中）。根目录仅允许 AGENTS.md 与 git 相关文件。
-4. **归档约定**：目标结束时整体移入 `Archived\goal<目标开始时间>_<最简描述>\`，内含 AGENTS.md、Goal\、History\、Tool\ 与 archived.md（回顾，须写明技术债务与失败模式）。
+3. **归档约定**：目标结束时整体移入 Archived\goal<目标开始时间>_<最简描述>\。
 
 ## 目标驱动循环
 
@@ -59,7 +58,6 @@ GoalDrivenAigc/
 ├── Goal/
 │   └── Goal.md            # 当前目标定义（仅用户可写）
 ├── History/               # 历史数据（机器产物）
-├── Tool/
-│   └── Tool.md            # 工具文档
-└── Archived/              # 归档目标
+├── Tool/                  # 工具集合
+└── Archived/              # 归档参考
 ```
