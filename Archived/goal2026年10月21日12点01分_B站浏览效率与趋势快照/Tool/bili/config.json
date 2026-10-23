@@ -1,0 +1,43 @@
+{
+  "_comment": "快照采集配置。window/slots 必须与 Goal/Goal.md 一致，audit.mjs 会交叉校验；不一致即 M5 失败。",
+  "window": {
+    "start": "2026-10-21T12:01:12+08:00",
+    "end": "2026-10-23T12:01:12+08:00"
+  },
+  "slots": [
+    8,
+    13,
+    20
+  ],
+  "maxDigestBytes": 4096,
+  "minItems": 100,
+  "topN": 50,
+  "toleranceMin": 10,
+  "lateCollectMaxMin": 120,
+  "throttleMs": 2500,
+  "retries": 3,
+  "snapshotRetryWaitMs": 30000,
+  "snapshotRetryWaitsMs": [
+    120000,
+    360000
+  ],
+  "rankingPauseUntil": "2026-10-23T07:55:00+08:00",
+  "sampling": {
+    "_comment": "双层采样：light 只打 popular(1请求)，full 打 3 个接口并生成 latest.md 与事件判定。官方时段优先，命中时不重复采样。light=8min 是为了让自治轮次的 9.5 分钟等待窗内必有样本（执行器单命令硬上限 10 分钟）。",
+    "lightEveryMin": 8,
+    "fullEveryMin": 30
+  },
+  "budget": {
+    "_comment": "按用户真实预算 ¥10 重设：实测 ¥0.0111/call → 700 calls≈¥7.8，硬上限 850≈¥9.4，留约 20% 安全边际。需同步 Goal.md M3.E4 与 FAILED 判据。",
+    "callsLimit": 700,
+    "callsHardLimit": 850,
+    "costLimitCny": 10
+  },
+  "endpoints": {
+    "ranking": "https://api.bilibili.com/x/web-interface/ranking/v2?rid=0&type=all",
+    "popular": "https://api.bilibili.com/x/web-interface/popular?ps=50&pn=1",
+    "hotsearch": "https://api.bilibili.com/x/web-interface/search/square?limit=10"
+  },
+  "riskNotes": "每快照仅 3 个请求。实测：同端点 1s 间隔连打 10 次全部 200，未触发限制；此前 9 请求/10s 跨多端点遍历触发 -352，说明限流更可能按端点多样性/资源遍历判定，而非单纯 QPS。详见 History/probe_risk.json。",
+  "outDir": "History"
+}

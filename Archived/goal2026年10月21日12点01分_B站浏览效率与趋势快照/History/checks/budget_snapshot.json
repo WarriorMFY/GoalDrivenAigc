@@ -1,0 +1,46 @@
+{
+ "ok": true,
+ "session": "session-8319a2b2-0ac7-400e-b9a3-5555bf370c19",
+ "days": [
+  {
+   "date": "2026-10-21",
+   "id": "session-8319a2b2-0ac7-400e-b9a3-5555bf370c19",
+   "calls": 200,
+   "input": 90178,
+   "output": 153638,
+   "cacheRead": 28204928,
+   "costUsd": 0.291861714
+  },
+  {
+   "date": "2026-10-22",
+   "id": "session-8319a2b2-0ac7-400e-b9a3-5555bf370c19",
+   "calls": 229,
+   "input": 63313,
+   "output": 74938,
+   "cacheRead": 68390912,
+   "costUsd": 0.3945255419999998
+  },
+  {
+   "date": "2026-10-23",
+   "id": "session-8319a2b2-0ac7-400e-b9a3-5555bf370c19",
+   "calls": 194,
+   "input": 71221,
+   "output": 82283,
+   "cacheRead": 76031744,
+   "costUsd": 0.3655557659999999
+  }
+ ],
+ "calls": 623,
+ "callsLimit": 700,
+ "callsHardLimit": 850,
+ "overLimit": false,
+ "overHardLimit": false,
+ "remaining": 77,
+ "inputTokens": 224712,
+ "outputTokens": 310859,
+ "cacheReadTokens": 172627584,
+ "costUsd": 1.0519,
+ "costCny": 7.574,
+ "source": "C:\\Users\\59784\\AppData\\Local\\DeepSeekHarness\\.dsh\\storages\\cost-meter\\ledger.json",
+ "at": "2026-10-23T07:07:29.877Z"
+}

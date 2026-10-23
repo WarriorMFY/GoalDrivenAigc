@@ -1,0 +1,65 @@
+{
+ "ok": true,
+ "at": "2026-10-21T15:24:22+08:00",
+ "snapshot": "20261021-1300",
+ "rawTokens": 75873,
+ "digestTokens": 842,
+ "tokenRatio": 90.1,
+ "byteRatio": 95.2,
+ "rawBytes": 259505,
+ "digestBytes": 2725,
+ "retention": 1,
+ "facts": [
+  {
+   "label": "排行#1 BV1pGnn67EbB 播放=391.4万",
+   "ok": true
+  },
+  {
+   "label": "排行#2 BV1SknF6KE5g 播放=188.1万",
+   "ok": true
+  },
+  {
+   "label": "排行#3 BV1MHJB63Emv 播放=258.2万",
+   "ok": true
+  },
+  {
+   "label": "排行#4 BV1Jonu6mEwN 播放=239.2万",
+   "ok": true
+  },
+  {
+   "label": "排行#5 BV1j5nj68E48 播放=196.7万",
+   "ok": true
+  },
+  {
+   "label": "全站 Top20 第20名 bvid=BV1Xdnc6jEbL",
+   "ok": true
+  },
+  {
+   "label": "最高播放二级分区=音乐综合",
+   "ok": true
+  },
+  {
+   "label": "热词第一名=徐静雨说詹姆斯王者归来",
+   "ok": true
+  },
+  {
+   "label": "上升榜第一名=BV1pGnn67EbB",
+   "ok": true
+  },
+  {
+   "label": "条目总数 N=110",
+   "ok": true
+  }
+ ],
+ "verdict": "raw 直读需 75873 tokens；脚本压缩后 LLM 只见 842 tokens（90.1x），关键事实保留 10/10",
+ "params": {
+  "estTokens": "CJK 1 字≈1 token，其余 3.5 字符≈1 token",
+  "maxDigestBytes": 4096
+ },
+ "sha256": {
+  "raw": "c798a5a00ddf1aa1f3767e9fc61096b9f777b8c286027e524337e75e3396a683",
+  "digest": "7633891dc2ed13f4307f2aa5ede9624285fba1047f80ee55f51f61228a29d211",
+  "script": "delta.mjs/exp"
+ },
+ "version": "bili-tool/1.0.0"
+}

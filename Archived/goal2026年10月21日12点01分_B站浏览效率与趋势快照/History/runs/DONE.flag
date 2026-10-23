@@ -1,0 +1,16 @@
+{
+ "at": "2026-10-23T08:10:18+08:00",
+ "trigger": "all-slots-settled",
+ "exit": 0,
+ "verdict": "PASS",
+ "snapshots": {
+  "done": 5,
+  "planned": 6
+ },
+ "failed": [],
+ "budget": {
+  "calls": 540,
+  "limit": 700,
+  "costCny": 5.9762
+ }
+}

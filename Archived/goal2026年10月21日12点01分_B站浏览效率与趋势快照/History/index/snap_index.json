@@ -1,0 +1,326 @@
+{
+ "version": 1,
+ "snapshots": [
+  {
+   "slot": "2026-10-21T13:00:00+08:00",
+   "stamp": "20261021-1300",
+   "planned": "2026-10-21T13:00:00+08:00",
+   "actual": "2026-10-21T13:00:09+08:00",
+   "status": "ok",
+   "cov": "3/3",
+   "items": 110,
+   "rawBytes": 259503,
+   "digestBytes": 2725,
+   "comp": 95,
+   "estTokens": {
+    "digest": 842,
+    "raw": 75872
+   },
+   "overlap": null,
+   "delta": null,
+   "digestVariant": {
+    "top": 20,
+    "rise": 10,
+    "dlt": 5
+   },
+   "reqs": [
+    {
+     "name": "ranking",
+     "ok": true,
+     "code": 0,
+     "bytes": 173489,
+     "attempts": 1
+    },
+    {
+     "name": "popular",
+     "ok": true,
+     "code": 0,
+     "bytes": 83883,
+     "attempts": 1
+    },
+    {
+     "name": "hotsearch",
+     "ok": true,
+     "code": 0,
+     "bytes": 2131,
+     "attempts": 1
+    }
+   ],
+   "risk": [],
+   "files": {
+    "raw": "20261021-1300_raw.json",
+    "csv": "20261021-1300.csv",
+    "digest": "20261021-1300.digest.md"
+   },
+   "sha256": {
+    "raw": "c798a5a00ddf1aa1f3767e9fc61096b9f777b8c286027e524337e75e3396a683",
+    "csv": "58876df2b0ab46a5ae2164a8ae95664277174d20e27c27c021f791eb740159b7",
+    "digest": "7633891dc2ed13f4307f2aa5ede9624285fba1047f80ee55f51f61228a29d211"
+   },
+   "elapsedMs": 5862
+  },
+  {
+   "slot": "2026-10-21T20:00:00+08:00",
+   "planned": "2026-10-21T20:00:00+08:00",
+   "status": "missed",
+   "lateMin": 353.5,
+   "at": "2026-10-22T01:53:30+08:00",
+   "note": "超出容差未采集"
+  },
+  {
+   "slot": "2026-10-22T08:00:00+08:00",
+   "stamp": "20261022-0844",
+   "planned": "2026-10-22T08:00:00+08:00",
+   "actual": "2026-10-22T08:44:44+08:00",
+   "status": "ok",
+   "cov": "3/3",
+   "items": 110,
+   "rawBytes": 255666,
+   "digestBytes": 3694,
+   "comp": 69,
+   "estTokens": {
+    "digest": 1142,
+    "raw": 74690
+   },
+   "overlap": 0.6,
+   "delta": {
+    "added": 20,
+    "dropped": 20,
+    "commonN": 30,
+    "prevN": 50
+   },
+   "digestVariant": {
+    "top": 20,
+    "rise": 10,
+    "dlt": 5
+   },
+   "reqs": [
+    {
+     "name": "ranking",
+     "ok": true,
+     "code": 0,
+     "bytes": 169014,
+     "attempts": 1
+    },
+    {
+     "name": "popular",
+     "ok": true,
+     "code": 0,
+     "bytes": 84605,
+     "attempts": 1
+    },
+    {
+     "name": "hotsearch",
+     "ok": true,
+     "code": 0,
+     "bytes": 2047,
+     "attempts": 1
+    }
+   ],
+   "risk": [],
+   "files": {
+    "raw": "20261022-0844_raw.json",
+    "csv": "20261022-0844.csv",
+    "digest": "20261022-0844.digest.md"
+   },
+   "sha256": {
+    "raw": "7e89b7ad5099138aeedd27a40294540957505c642e13ebbae0d7c7d5700b09ee",
+    "csv": "6abc0ea93f8dc017fbe8f9ba040afd8a0b3de5c7426d6e5001a8954e5160a522",
+    "digest": "62f2bfb2e816abdc22c583db5ef62ffd9f722a4dc2c80661e8847d3c665cb4ae"
+   },
+   "late": true,
+   "lateMin": 44.6
+  },
+  {
+   "slot": "2026-10-22T13:00:00+08:00",
+   "stamp": "20261022-1300",
+   "planned": "2026-10-22T13:00:00+08:00",
+   "actual": "2026-10-22T13:00:17+08:00",
+   "status": "ok",
+   "cov": "3/3",
+   "items": 110,
+   "rawBytes": 258140,
+   "digestBytes": 3436,
+   "comp": 75,
+   "estTokens": {
+    "digest": 1061,
+    "raw": 75579
+   },
+   "overlap": 0.94,
+   "delta": {
+    "added": 3,
+    "dropped": 3,
+    "commonN": 47,
+    "prevN": 50
+   },
+   "digestVariant": {
+    "top": 20,
+    "rise": 10,
+    "dlt": 5
+   },
+   "reqs": [
+    {
+     "name": "ranking",
+     "ok": true,
+     "code": 0,
+     "bytes": 171156,
+     "attempts": 1
+    },
+    {
+     "name": "popular",
+     "ok": true,
+     "code": 0,
+     "bytes": 84925,
+     "attempts": 1
+    },
+    {
+     "name": "hotsearch",
+     "ok": true,
+     "code": 0,
+     "bytes": 2059,
+     "attempts": 1
+    }
+   ],
+   "risk": [],
+   "files": {
+    "raw": "20261022-1300_raw.json",
+    "csv": "20261022-1300.csv",
+    "digest": "20261022-1300.digest.md"
+   },
+   "sha256": {
+    "raw": "fea097dabd9ee919ccb919c93a0fee93a5c90613c2937be8fd7ce21f082be0ea",
+    "csv": "620c2abf2e9e9b52f62e45dbf22cc3df93a97f093697444ba7fb517560ef6872",
+    "digest": "5da3e1377c0ab1444df1c4f2ababcfc48ab854db6e821719d11126ab4e5bb6cc"
+   }
+  },
+  {
+   "slot": "2026-10-22T20:00:00+08:00",
+   "stamp": "20261022-2000",
+   "planned": "2026-10-22T20:00:00+08:00",
+   "actual": "2026-10-22T20:00:18+08:00",
+   "status": "ok",
+   "cov": "3/3",
+   "items": 110,
+   "rawBytes": 258147,
+   "digestBytes": 3642,
+   "comp": 71,
+   "estTokens": {
+    "digest": 1127,
+    "raw": 75490
+   },
+   "overlap": 0.82,
+   "delta": {
+    "added": 9,
+    "dropped": 9,
+    "commonN": 41,
+    "prevN": 50
+   },
+   "digestVariant": {
+    "top": 20,
+    "rise": 10,
+    "dlt": 5
+   },
+   "reqs": [
+    {
+     "name": "ranking",
+     "ok": true,
+     "code": 0,
+     "bytes": 172139,
+     "attempts": 1
+    },
+    {
+     "name": "popular",
+     "ok": true,
+     "code": 0,
+     "bytes": 83665,
+     "attempts": 1
+    },
+    {
+     "name": "hotsearch",
+     "ok": true,
+     "code": 0,
+     "bytes": 2343,
+     "attempts": 1
+    }
+   ],
+   "risk": [],
+   "files": {
+    "raw": "20261022-2000_raw.json",
+    "csv": "20261022-2000.csv",
+    "digest": "20261022-2000.digest.md"
+   },
+   "sha256": {
+    "raw": "0fd43e6fbed3bf48a313e7cdcf4ab0fcf043373737887539b258ec5c936a9639",
+    "csv": "2ccf1a971765357a38fe3968e7ca7413ea59f1c0ce11678081729c4423b235b2",
+    "digest": "d69feaaa82ab58dded4f120268670159068371c2088cdd427f39dce846999c48"
+   }
+  },
+  {
+   "slot": "2026-10-23T08:00:00+08:00",
+   "stamp": "20261023-0800",
+   "planned": "2026-10-23T08:00:00+08:00",
+   "actual": "2026-10-23T08:00:20+08:00",
+   "status": "ok",
+   "cov": "3/3",
+   "items": 110,
+   "rawBytes": 255899,
+   "digestBytes": 3530,
+   "comp": 73,
+   "estTokens": {
+    "digest": 1086,
+    "raw": 74796
+   },
+   "overlap": 0.74,
+   "delta": {
+    "added": 13,
+    "dropped": 13,
+    "commonN": 37,
+    "prevN": 50
+   },
+   "digestVariant": {
+    "top": 20,
+    "rise": 10,
+    "dlt": 5
+   },
+   "reqs": [
+    {
+     "name": "ranking",
+     "ok": true,
+     "code": 0,
+     "bytes": 171675,
+     "attempts": 1
+    },
+    {
+     "name": "popular",
+     "ok": true,
+     "code": 0,
+     "bytes": 82089,
+     "attempts": 1
+    },
+    {
+     "name": "hotsearch",
+     "ok": true,
+     "code": 0,
+     "bytes": 2135,
+     "attempts": 1
+    }
+   ],
+   "risk": [],
+   "files": {
+    "raw": "20261023-0800_raw.json",
+    "csv": "20261023-0800.csv",
+    "digest": "20261023-0800.digest.md"
+   },
+   "sha256": {
+    "raw": "272741455c988a713f89c9150fa58d2aa235d5bc176a400f0599068f1e302730",
+    "csv": "b980f63ca25b5b6236b8b27b2fe86e5babc66a3bb5a1026d01606cb6856c62bb",
+    "digest": "c4e7808d835d31b81a232c39c362afa52abe771c7cbf1cc1636c2cf359f2cc9f"
+   }
+  }
+ ],
+ "updatedAt": "2026-10-23T08:00:20+08:00",
+ "goalWindow": {
+  "start": "2026-10-21T12:01:12+08:00",
+  "end": "2026-10-23T12:01:12+08:00"
+ }
+}

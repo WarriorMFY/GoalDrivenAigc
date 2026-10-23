@@ -1,0 +1,257 @@
+{
+ "verdict": "PASS",
+ "version": "bili-tool/1.0.0",
+ "at": "2026-10-23T15:07:29+08:00",
+ "window": {
+  "start": "2026-10-21T12:01:12+08:00",
+  "end": "2026-10-23T12:01:12+08:00"
+ },
+ "snapshots": {
+  "done": 5,
+  "planned": 6
+ },
+ "checks": 47,
+ "failed": [],
+ "budget": {
+  "calls": 623,
+  "limit": 700,
+  "costCny": 7.574
+ },
+ "all": [
+  {
+   "id": "cfg.goal_window_match",
+   "ok": true,
+   "detail": "config.window 与 Goal.md 一致"
+  },
+  {
+   "id": "M5.goal_budget_match",
+   "ok": true,
+   "detail": "Goal.md 与 config 的 calls 上限一致（700）"
+  },
+  {
+   "id": "M5.goal_hardlimit_match",
+   "ok": true,
+   "detail": "Goal.md 与 config 的 calls 硬上限一致（850）"
+  },
+  {
+   "id": "M1.valid_snapshots",
+   "ok": true,
+   "detail": "有效快照 4 ≥ 4（计划 6 个时段；有效=按时且非补采）"
+  },
+  {
+   "id": "M1.slot:10-21T13:00",
+   "ok": true,
+   "detail": "PASS status=ok 偏差=0.1min"
+  },
+  {
+   "id": "M1.slot:10-21T20:00",
+   "ok": true,
+   "detail": "PASS 丢失已留痕：超出容差未采集"
+  },
+  {
+   "id": "M1.slot:10-22T08:00",
+   "ok": true,
+   "detail": "PASS 迟到补采（偏差 45min），不计入有效快照但数据已留存"
+  },
+  {
+   "id": "M1.slot:10-22T13:00",
+   "ok": true,
+   "detail": "PASS status=ok 偏差=0.3min"
+  },
+  {
+   "id": "M1.slot:10-22T20:00",
+   "ok": true,
+   "detail": "PASS status=ok 偏差=0.3min"
+  },
+  {
+   "id": "M1.slot:10-23T08:00",
+   "ok": true,
+   "detail": "PASS status=ok 偏差=0.3min"
+  },
+  {
+   "id": "M2.files:20261021-1300",
+   "ok": true,
+   "detail": "raw/csv/digest 齐全"
+  },
+  {
+   "id": "M3.E2.digest_bytes:20261021-1300",
+   "ok": true,
+   "detail": "2725B ≤ 4096B"
+  },
+  {
+   "id": "M5.sha256:20261021-1300",
+   "ok": true,
+   "detail": "digest sha256 与索引一致"
+  },
+  {
+   "id": "M2.items:20261021-1300",
+   "ok": true,
+   "detail": "条目 110 ≥ 100（排行 50）"
+  },
+  {
+   "id": "M2.blocks:20261021-1300",
+   "ok": true,
+   "detail": "四板块齐全"
+  },
+  {
+   "id": "M3.E1.comp:20261021-1300",
+   "ok": true,
+   "detail": "压缩 95x ≥ 8x"
+  },
+  {
+   "id": "M2.files:20261022-0844",
+   "ok": true,
+   "detail": "raw/csv/digest 齐全"
+  },
+  {
+   "id": "M3.E2.digest_bytes:20261022-0844",
+   "ok": true,
+   "detail": "3694B ≤ 4096B"
+  },
+  {
+   "id": "M5.sha256:20261022-0844",
+   "ok": true,
+   "detail": "digest sha256 与索引一致"
+  },
+  {
+   "id": "M2.items:20261022-0844",
+   "ok": true,
+   "detail": "条目 110 ≥ 100（排行 50）"
+  },
+  {
+   "id": "M2.blocks:20261022-0844",
+   "ok": true,
+   "detail": "四板块齐全"
+  },
+  {
+   "id": "M3.E1.comp:20261022-0844",
+   "ok": true,
+   "detail": "压缩 69x ≥ 8x"
+  },
+  {
+   "id": "M2.files:20261022-1300",
+   "ok": true,
+   "detail": "raw/csv/digest 齐全"
+  },
+  {
+   "id": "M3.E2.digest_bytes:20261022-1300",
+   "ok": true,
+   "detail": "3436B ≤ 4096B"
+  },
+  {
+   "id": "M5.sha256:20261022-1300",
+   "ok": true,
+   "detail": "digest sha256 与索引一致"
+  },
+  {
+   "id": "M2.items:20261022-1300",
+   "ok": true,
+   "detail": "条目 110 ≥ 100（排行 50）"
+  },
+  {
+   "id": "M2.blocks:20261022-1300",
+   "ok": true,
+   "detail": "四板块齐全"
+  },
+  {
+   "id": "M3.E1.comp:20261022-1300",
+   "ok": true,
+   "detail": "压缩 75x ≥ 8x"
+  },
+  {
+   "id": "M2.files:20261022-2000",
+   "ok": true,
+   "detail": "raw/csv/digest 齐全"
+  },
+  {
+   "id": "M3.E2.digest_bytes:20261022-2000",
+   "ok": true,
+   "detail": "3642B ≤ 4096B"
+  },
+  {
+   "id": "M5.sha256:20261022-2000",
+   "ok": true,
+   "detail": "digest sha256 与索引一致"
+  },
+  {
+   "id": "M2.items:20261022-2000",
+   "ok": true,
+   "detail": "条目 110 ≥ 100（排行 50）"
+  },
+  {
+   "id": "M2.blocks:20261022-2000",
+   "ok": true,
+   "detail": "四板块齐全"
+  },
+  {
+   "id": "M3.E1.comp:20261022-2000",
+   "ok": true,
+   "detail": "压缩 71x ≥ 8x"
+  },
+  {
+   "id": "M2.files:20261023-0800",
+   "ok": true,
+   "detail": "raw/csv/digest 齐全"
+  },
+  {
+   "id": "M3.E2.digest_bytes:20261023-0800",
+   "ok": true,
+   "detail": "3530B ≤ 4096B"
+  },
+  {
+   "id": "M5.sha256:20261023-0800",
+   "ok": true,
+   "detail": "digest sha256 与索引一致"
+  },
+  {
+   "id": "M2.items:20261023-0800",
+   "ok": true,
+   "detail": "条目 110 ≥ 100（排行 50）"
+  },
+  {
+   "id": "M2.blocks:20261023-0800",
+   "ok": true,
+   "detail": "四板块齐全"
+  },
+  {
+   "id": "M3.E1.comp:20261023-0800",
+   "ok": true,
+   "detail": "压缩 73x ≥ 8x"
+  },
+  {
+   "id": "M3.E2.median",
+   "ok": true,
+   "detail": "digest 中位数 3530B"
+  },
+  {
+   "id": "M3.E1.median",
+   "ok": true,
+   "detail": "压缩中位数 73x"
+  },
+  {
+   "id": "M4.overlap_median",
+   "ok": true,
+   "detail": "相邻重合度中位数 82%（4 组，Goal.md 名义 5 组；快照减少时按实际组数判定）"
+  },
+  {
+   "id": "M3.E4.budget",
+   "ok": true,
+   "detail": "调用 623/700（硬上限 850）¥7.574"
+  },
+  {
+   "id": "M3.E6.exp",
+   "ok": true,
+   "detail": "压缩比 90.1x 保留率 100%"
+  },
+  {
+   "id": "M4.trend_report",
+   "ok": true,
+   "detail": "存在"
+  },
+  {
+   "id": "M4.practice_doc",
+   "ok": true,
+   "detail": "存在"
+  }
+ ]
+}
