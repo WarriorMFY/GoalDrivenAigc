@@ -5,6 +5,11 @@
 2. **Goal\Goal.md 仅用户可写，你只读**。目标、判据、时间窗不得修改。
 3. **归档约定**：目标结束时整体移入 Archived\goal<目标开始时间>_<最简描述>\。
 
+## Skills（技能库）
+
+- **索引**：技能清单、触发规则、边界与维护方式见 `Skills\Skill.md`；技能实体在其子目录 `Skills\<name>\SKILL.md`。
+- **要点**：任务与某技能 `description` 匹配时先读其 `SKILL.md` 再执行；技能只给方法，判定数据仍须由 `Tool\` 脚本产出（全局规则 1 优先）。
+
 ## 目标驱动循环
 
 ```
@@ -59,5 +64,9 @@ GoalDrivenAigc/
 │   └── Goal.md            # 当前目标定义（仅用户可写）
 ├── History/               # 历史数据（机器产物）
 ├── Tool/                  # 工具集合
+├── Skills/                # 技能库（根级只留索引）
+│   ├── Skill.md           # 技能清单/触发规则/边界
+│   └── desc-to-spec/
+│       └── SKILL.md       # 模糊需求→可量化规格
 └── Archived/              # 归档参考
 ```
