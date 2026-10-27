@@ -79,9 +79,14 @@ $env:GIT_TERMINAL_PROMPT = '0'
 for ($i = 1; $i -le $Retries; $i++) {
     Write-Host ""
     Write-Host "=== 推送尝试 $i / $Retries ===" -ForegroundColor Cyan
+    # http.version=HTTP/1.1：实测 HTTP/2 下大包推送会 errno 10053（Connection was aborted），
+    # 强制 1.1 后稳定；lowspeed 阈值避免长时间挂死在半死连接上。
     $out = git -c credential.helper= `
                -c "http.extraheader=AUTHORIZATION: basic $b64" `
                -c http.sslBackend=openssl `
+               -c http.version=HTTP/1.1 `
+               -c http.lowSpeedLimit=1000 `
+               -c http.lowSpeedTime=60 `
                -c http.postBuffer=524288000 `
                push -u origin main 2>&1 | Out-String
     $code = $LASTEXITCODE
@@ -90,6 +95,15 @@ for ($i = 1; $i -le $Retries; $i++) {
     if ($code -eq 0) {
         Write-Host ""
         Write-Host "推送成功" -ForegroundColor Green
+        git log --oneline -1
+        exit 0
+    }
+    # 远端可能已经收到了提交，只是本地没收到 ack（"Everything up-to-date"），复核一次再判失败
+    $remote = (git ls-remote origin refs/heads/main 2>$null) | Select-Object -First 1
+    $local = (git rev-parse HEAD)
+    if ($remote -and $remote.StartsWith($local)) {
+        Write-Host ""
+        Write-Host "复核：远端已含本地 HEAD（推送其实已落地）" -ForegroundColor Green
         git log --oneline -1
         exit 0
     }
