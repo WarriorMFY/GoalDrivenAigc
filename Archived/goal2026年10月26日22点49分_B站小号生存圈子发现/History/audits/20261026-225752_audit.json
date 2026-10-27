@@ -1,0 +1,48 @@
+{
+  "stamp": "20261026-225752",
+  "auditedAt": "2026-10-26T22:58:06+08:00",
+  "sha256": "5e9d8528a34cbaa6c6442ba152cdcac29e2067d48c9042f30b78886c22e95589",
+  "indexMatch": true,
+  "configTags": {
+    "order_now": "pubdate",
+    "order_sample": "pubdate",
+    "pages_now": 3,
+    "pages_sample": 1,
+    "smallFans": 0,
+    "minSmallSamples": 3,
+    "minMedianRate": 0.03
+  },
+  "clusters": [
+    {
+      "id": "ai-news",
+      "name": "AI事件搬运/解析/翻译",
+      "samples": 40,
+      "uniqueAuthors": 34,
+      "unknownFans": 0,
+      "smallSamples": 0,
+      "smallWithPlay": 0,
+      "medianRate": null,
+      "rateCheck": null,
+      "viewFailed": 0,
+      "medianAgeHours": null,
+      "histAll": {
+        "10k+": 19,
+        "100-999": 10,
+        "1k-9k": 10,
+        "1-9": 1
+      },
+      "histSmall": {},
+      "n0_ok": false,
+      "rate_ok": false
+    }
+  ],
+  "summary": [
+    {
+      "id": "ai-news",
+      "smallSamples": 0,
+      "medianRate": null,
+      "n0_ok": false,
+      "rate_ok": false
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "stamp": "20261026-225702",
+  "at": "2026-10-26T22:57:02+08:00",
+  "order": "pubdate",
+  "pages": 1,
+  "clusters": [
+    {
+      "id": "ai-news",
+      "name": "AI事件搬运/解析/翻译",
+      "keywords": [
+        "AI资讯",
+        "AI翻译",
+        "AI解析"
+      ],
+      "samples": 60,
+      "uniqueAuthors": 52,
+      "cardOk": 52,
+      "unknownFans": 0,
+      "smallSamples": 0,
+      "smallWithPlay": 0,
+      "medianRate": null,
+      "small": []
+    }
+  ],
+  "errors": []
+}

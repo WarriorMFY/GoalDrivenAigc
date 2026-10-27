@@ -1,0 +1,124 @@
+{
+  "stamp": "20261027-204003",
+  "at": "2026-10-27T20:59:27+08:00",
+  "sampleFile": "History\\samples\\20261027-204003.json",
+  "sampleSha256": "8fb027e6930d4020840f46f56383fcac5deb2dcbac6d99ff146d95aa59f1babc",
+  "window": {
+    "start": "2026-10-26T22:49:00+08:00",
+    "end": "2026-10-27T22:49:00+08:00",
+    "remainingHours": 1.83
+  },
+  "thresholds": {
+    "smallDef": "fans<=100 && archive_count<=20",
+    "maxFans": 100,
+    "maxArchiveCount": 20,
+    "minSmallSamples": 3,
+    "minMedianRate": 0.03,
+    "minClusterSamples": 30
+  },
+  "overall": "PASS",
+  "passedClusters": [
+    "ai-tools"
+  ],
+  "clusters": [
+    {
+      "id": "ai-tools",
+      "name": "AI工具/效率",
+      "keywords": [
+        "AI工具",
+        "AI效率"
+      ],
+      "samples": 116,
+      "smallSamples": 3,
+      "n0": 3,
+      "medianRate": 0.23119777158774374,
+      "state": "PASS",
+      "reason": "n0=3 ≥ 3 且 M_R=23.12% ≥ 3.00%",
+      "top": [
+        {
+          "bvid": "BV1q8no6rE3Q",
+          "rate": 0.3285,
+          "play": 621,
+          "title": "【DSH插件】中文思考：让 AI 把推理过程写成中文"
+        },
+        {
+          "bvid": "BV1CGxg6NEnG",
+          "rate": 0.2312,
+          "play": 359,
+          "title": "B站强推！建议所有想学Workbuddy的同学，死磕这条视频，花了一周时间整理的"
+        },
+        {
+          "bvid": "BV1Q1xN6TEU1",
+          "rate": 0.0085,
+          "play": 2008,
+          "title": "OpenAI声称推翻指数时间假设（ETH）：近30年的计算机猜想，算法的效率极限"
+        }
+      ]
+    },
+    {
+      "id": "handcraft",
+      "name": "手工/绘画/手办",
+      "keywords": [
+        "手工",
+        "绘画",
+        "手办"
+      ],
+      "samples": 175,
+      "smallSamples": 2,
+      "n0": 2,
+      "medianRate": 0.057259953161592506,
+      "state": "INSUFFICIENT",
+      "reason": "新号有效样本 2 < 3",
+      "top": [
+        {
+          "bvid": "BV1fJxM6QEwi",
+          "rate": 0.0574,
+          "play": 122,
+          "title": "24 段魔尺变蝴蝶结"
+        },
+        {
+          "bvid": "BV1dbxg6WEvu",
+          "rate": 0.0571,
+          "play": 140,
+          "title": "崩铁289福袋开箱，开出来了！"
+        }
+      ]
+    },
+    {
+      "id": "ai-news",
+      "name": "AI事件搬运/解析/翻译",
+      "keywords": [
+        "AI资讯",
+        "AI翻译",
+        "AI解析"
+      ],
+      "samples": 160,
+      "smallSamples": 8,
+      "n0": 8,
+      "medianRate": 0.025050725768690496,
+      "state": "GAP",
+      "reason": "n0=8 达标但 M_R=2.51% < 3.00%",
+      "top": [
+        {
+          "bvid": "BV1oLHF6mEpj",
+          "rate": 0.2752,
+          "play": 109,
+          "title": "【中森明菜】（AI翻译）富士急乐园之过山车决胜（1996年之后）（内嵌字幕）"
+        },
+        {
+          "bvid": "BV1udxT6uErE",
+          "rate": 0.1835,
+          "play": 665,
+          "title": "【明日方舟/熟肉】kagami、方丈、日服考据党GF_Saihate等五人看国服"
+        },
+        {
+          "bvid": "BV1T8nZ6hEd5",
+          "rate": 0.1294,
+          "play": 201,
+          "title": "截屏发微信用人肉翻译不嫌麻烦? 屏幕翻译软件AI加离线双模式, 无广纯净附安装包"
+        }
+      ]
+    }
+  ],
+  "prevOverall": "PASS"
+}

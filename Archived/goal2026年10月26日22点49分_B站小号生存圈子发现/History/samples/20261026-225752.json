@@ -1,0 +1,717 @@
+{
+  "stamp": "20261026-225752",
+  "at": "2026-10-26T22:57:52+08:00",
+  "order": "pubdate",
+  "pages": 1,
+  "clusters": [
+    {
+      "id": "ai-news",
+      "name": "AI事件搬运/解析/翻译",
+      "keywords": [
+        "AI资讯",
+        "AI翻译",
+        "AI解析"
+      ],
+      "samples": 40,
+      "uniqueAuthors": 34,
+      "cardOk": 34,
+      "unknownFans": 0,
+      "smallSamples": 0,
+      "smallWithPlay": 0,
+      "medianRate": null,
+      "unknownDetail": [],
+      "items": [
+        {
+          "bvid": "BV1Lgnd6iExz",
+          "mid": 354077280,
+          "author": "1818黄金眼",
+          "keyword": "AI资讯",
+          "typename": "社会",
+          "pubdate": 1793025000,
+          "fans": 1016176,
+          "stat": {
+            "play": 1152,
+            "like": 46,
+            "reply": 3,
+            "favorite": 3,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1dVnZ63EvC",
+          "mid": 558198793,
+          "author": "布衣云水客",
+          "keyword": "AI资讯",
+          "typename": "计算机技术",
+          "pubdate": 1793023415,
+          "fans": 279,
+          "stat": {
+            "play": 2,
+            "like": 1,
+            "reply": 1,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1DpnZ6KE8Y",
+          "mid": 407760306,
+          "author": "泰坦芬奇",
+          "keyword": "AI资讯",
+          "typename": "日常",
+          "pubdate": 1793023363,
+          "fans": 320,
+          "stat": {
+            "play": 1,
+            "like": 0,
+            "reply": 0,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV17TnZ6jEtN",
+          "mid": 526890129,
+          "author": "红星视频",
+          "keyword": "AI资讯",
+          "typename": "热点",
+          "pubdate": 1793020516,
+          "fans": 360780,
+          "stat": {
+            "play": 143,
+            "like": 6,
+            "reply": 0,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1ZMnZ6yEyy",
+          "mid": 6250993,
+          "author": "看看新闻Knews",
+          "keyword": "AI资讯",
+          "typename": "社会",
+          "pubdate": 1793020032,
+          "fans": 418358,
+          "stat": {
+            "play": 559,
+            "like": 24,
+            "reply": 1,
+            "favorite": 2,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1CznZ6WEt5",
+          "mid": 500207171,
+          "author": "陕视新闻",
+          "keyword": "AI资讯",
+          "typename": "社会",
+          "pubdate": 1793019059,
+          "fans": 11909,
+          "stat": {
+            "play": 1,
+            "like": 1,
+            "reply": 0,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1yinZ6xEHp",
+          "mid": 501247999,
+          "author": "RT今日俄罗斯",
+          "keyword": "AI资讯",
+          "typename": "日常",
+          "pubdate": 1793018592,
+          "fans": 1370391,
+          "stat": {
+            "play": 2250,
+            "like": 205,
+            "reply": 21,
+            "favorite": 8,
+            "danmaku": 1
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1dTnd6qEHJ",
+          "mid": 3747573145800217,
+          "author": "GrokBot打工日记",
+          "keyword": "AI资讯",
+          "typename": "设计·创意",
+          "pubdate": 1793012400,
+          "fans": 430,
+          "stat": {
+            "play": 129,
+            "like": 21,
+            "reply": 11,
+            "favorite": 9,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1Rgnd6vE1t",
+          "mid": 2144464488,
+          "author": "掌闻视讯",
+          "keyword": "AI资讯",
+          "typename": "社会",
+          "pubdate": 1793011089,
+          "fans": 75663,
+          "stat": {
+            "play": 101,
+            "like": 5,
+            "reply": 1,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1Rgnd6vEZS",
+          "mid": 2144464488,
+          "author": "掌闻视讯",
+          "keyword": "AI资讯",
+          "typename": "社会",
+          "pubdate": 1793011082,
+          "fans": 75663,
+          "stat": {
+            "play": 115,
+            "like": 2,
+            "reply": 0,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1Dnnd6ZEKt",
+          "mid": 3706993476897479,
+          "author": "Airwallex空中云汇官方",
+          "keyword": "AI资讯",
+          "typename": "娱乐杂谈",
+          "pubdate": 1793010315,
+          "fans": 163,
+          "stat": {
+            "play": 6,
+            "like": 1,
+            "reply": 0,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1jPnd66EXE",
+          "mid": 3546906892438202,
+          "author": "AGIBadGuy",
+          "keyword": "AI资讯",
+          "typename": "软件应用",
+          "pubdate": 1793008272,
+          "fans": 200,
+          "stat": {
+            "play": 109,
+            "like": 1,
+            "reply": 1,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1kvnd6EEx2",
+          "mid": 526890129,
+          "author": "红星视频",
+          "keyword": "AI资讯",
+          "typename": "热点",
+          "pubdate": 1793006957,
+          "fans": 360780,
+          "stat": {
+            "play": 346,
+            "like": 19,
+            "reply": 0,
+            "favorite": 2,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1qynd6GECP",
+          "mid": 323321748,
+          "author": "善全观世",
+          "keyword": "AI资讯",
+          "typename": "日常",
+          "pubdate": 1793006772,
+          "fans": 10492,
+          "stat": {
+            "play": 135,
+            "like": 5,
+            "reply": 1,
+            "favorite": 3,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV118nd6QESV",
+          "mid": 22022789,
+          "author": "YouTube全球洞见",
+          "keyword": "AI资讯",
+          "typename": "日常",
+          "pubdate": 1793003785,
+          "fans": 9344,
+          "stat": {
+            "play": 414,
+            "like": 2,
+            "reply": 1,
+            "favorite": 10,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1QFno6wEYp",
+          "mid": 440490451,
+          "author": "梓仙",
+          "keyword": "AI资讯",
+          "typename": "影视剪辑",
+          "pubdate": 1793003106,
+          "fans": 3187,
+          "stat": {
+            "play": 39,
+            "like": 1,
+            "reply": 0,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1iDnd6MEK4",
+          "mid": 6250993,
+          "author": "看看新闻Knews",
+          "keyword": "AI资讯",
+          "typename": "社会",
+          "pubdate": 1793001398,
+          "fans": 418358,
+          "stat": {
+            "play": 904,
+            "like": 47,
+            "reply": 0,
+            "favorite": 7,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1FonX6qEe1",
+          "mid": 1271098271,
+          "author": "上观-大局观",
+          "keyword": "AI资讯",
+          "typename": "社会",
+          "pubdate": 1792996742,
+          "fans": 38954,
+          "stat": {
+            "play": 57,
+            "like": 1,
+            "reply": 0,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV11tn96LEKn",
+          "mid": 3546890092153166,
+          "author": "YouTube精选智慧",
+          "keyword": "AI资讯",
+          "typename": "社科·法律·心理",
+          "pubdate": 1792991389,
+          "fans": 190442,
+          "stat": {
+            "play": 26709,
+            "like": 529,
+            "reply": 79,
+            "favorite": 170,
+            "danmaku": 31
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1tFnR6WE8L",
+          "mid": 1913242948,
+          "author": "知灵鸟",
+          "keyword": "AI资讯",
+          "typename": "日常",
+          "pubdate": 1792991139,
+          "fans": 6,
+          "stat": {
+            "play": 122,
+            "like": 1,
+            "reply": 0,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1Umno6FEec",
+          "mid": 689607931,
+          "author": "一尺飞雪",
+          "keyword": "AI解析",
+          "typename": "日常",
+          "pubdate": 1793024593,
+          "fans": 719,
+          "stat": {
+            "play": 343,
+            "like": 31,
+            "reply": 11,
+            "favorite": 6,
+            "danmaku": 2
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV19jnZ6uESi",
+          "mid": 1429263162,
+          "author": "小小橙的一天",
+          "keyword": "AI解析",
+          "typename": "野生技能协会",
+          "pubdate": 1793024361,
+          "fans": 248,
+          "stat": {
+            "play": 3,
+            "like": 0,
+            "reply": 1,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1RVnZ63EPR",
+          "mid": 3546883108637239,
+          "author": "大模型观察员",
+          "keyword": "AI解析",
+          "typename": "校园学习",
+          "pubdate": 1793023493,
+          "fans": 4701,
+          "stat": {
+            "play": 18,
+            "like": 0,
+            "reply": 0,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1eMHN6ZEZK",
+          "mid": 3546875378534881,
+          "author": "英语访谈实录",
+          "keyword": "AI解析",
+          "typename": "社科·法律·心理",
+          "pubdate": 1793023200,
+          "fans": 1156,
+          "stat": {
+            "play": 4,
+            "like": 0,
+            "reply": 0,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1DpnZ6NEU9",
+          "mid": 1926183162,
+          "author": "认真工作的JIA",
+          "keyword": "AI解析",
+          "typename": "日常",
+          "pubdate": 1793022935,
+          "fans": 5959,
+          "stat": {
+            "play": 85,
+            "like": 2,
+            "reply": 0,
+            "favorite": 2,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1yqnZ6REMQ",
+          "mid": 1230778858,
+          "author": "ai前端面试",
+          "keyword": "AI解析",
+          "typename": "计算机技术",
+          "pubdate": 1793019460,
+          "fans": 9642,
+          "stat": {
+            "play": 10,
+            "like": 0,
+            "reply": 1,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1KenZ6ZEgN",
+          "mid": 383325863,
+          "author": "大雄AI实战",
+          "keyword": "AI解析",
+          "typename": "计算机技术",
+          "pubdate": 1793016808,
+          "fans": 2695,
+          "stat": {
+            "play": 180,
+            "like": 6,
+            "reply": 2,
+            "favorite": 7,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV18Fno6wED2",
+          "mid": 204975100,
+          "author": "测开刘云-AI测试",
+          "keyword": "AI解析",
+          "typename": "职业职场",
+          "pubdate": 1793016000,
+          "fans": 2401,
+          "stat": {
+            "play": 35,
+            "like": 0,
+            "reply": 0,
+            "favorite": 2,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1hinR6fETV",
+          "mid": 1128760322,
+          "author": "莉洋国学-收徒中",
+          "keyword": "AI解析",
+          "typename": "日常",
+          "pubdate": 1793013591,
+          "fans": 1776,
+          "stat": {
+            "play": 2,
+            "like": 1,
+            "reply": 2,
+            "favorite": 1,
+            "danmaku": 3
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1tnnd6fEfw",
+          "mid": 1894792835,
+          "author": "每天一小时听英文",
+          "keyword": "AI解析",
+          "typename": "校园学习",
+          "pubdate": 1793010945,
+          "fans": 456391,
+          "stat": {
+            "play": 148,
+            "like": 1,
+            "reply": 1,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1FGHw6bEEt",
+          "mid": 386105566,
+          "author": "前端AI进阶",
+          "keyword": "AI解析",
+          "typename": "野生技能协会",
+          "pubdate": 1793010600,
+          "fans": 895,
+          "stat": {
+            "play": 14,
+            "like": 1,
+            "reply": 0,
+            "favorite": 3,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1Fcnd6kEKJ",
+          "mid": 1894792835,
+          "author": "每天一小时听英文",
+          "keyword": "AI解析",
+          "typename": "校园学习",
+          "pubdate": 1793010047,
+          "fans": 456391,
+          "stat": {
+            "play": 179,
+            "like": 3,
+            "reply": 1,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1oTnd6qEqv",
+          "mid": 3546604709611869,
+          "author": "圣诺医家",
+          "keyword": "AI解析",
+          "typename": "日常",
+          "pubdate": 1793008554,
+          "fans": 462,
+          "stat": {
+            "play": 23,
+            "like": 0,
+            "reply": 0,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1YPnS6jErm",
+          "mid": 301466463,
+          "author": "赛博门外憨",
+          "keyword": "AI解析",
+          "typename": "计算机技术",
+          "pubdate": 1793008500,
+          "fans": 84039,
+          "stat": {
+            "play": 212,
+            "like": 6,
+            "reply": 4,
+            "favorite": 4,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1dund6KE8E",
+          "mid": 1524607052,
+          "author": "liudougong",
+          "keyword": "AI解析",
+          "typename": "日常",
+          "pubdate": 1793008227,
+          "fans": 189,
+          "stat": {
+            "play": 4,
+            "like": 0,
+            "reply": 0,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV16Bnd6jEZw",
+          "mid": 1894792835,
+          "author": "每天一小时听英文",
+          "keyword": "AI解析",
+          "typename": "校园学习",
+          "pubdate": 1793007785,
+          "fans": 456391,
+          "stat": {
+            "play": 159,
+            "like": 4,
+            "reply": 1,
+            "favorite": 3,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1FBnd67Ek1",
+          "mid": 1894792835,
+          "author": "每天一小时听英文",
+          "keyword": "AI解析",
+          "typename": "校园学习",
+          "pubdate": 1793007783,
+          "fans": 456391,
+          "stat": {
+            "play": 73,
+            "like": 3,
+            "reply": 1,
+            "favorite": 3,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1oKnd6MEXS",
+          "mid": 176405073,
+          "author": "Synology群晖",
+          "keyword": "AI解析",
+          "typename": "计算机技术",
+          "pubdate": 1793007760,
+          "fans": 45592,
+          "stat": {
+            "play": 244,
+            "like": 8,
+            "reply": 0,
+            "favorite": 2,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1E1nd6kEpx",
+          "mid": 1759890150,
+          "author": "唐宇迪的AI入门课",
+          "keyword": "AI解析",
+          "typename": "计算机技术",
+          "pubdate": 1793006543,
+          "fans": 53126,
+          "stat": {
+            "play": 70,
+            "like": 2,
+            "reply": 0,
+            "favorite": 2,
+            "danmaku": 0
+          },
+          "rate": null
+        },
+        {
+          "bvid": "BV1mpnd64EJn",
+          "mid": 1015063718,
+          "author": "私域高小飘ufan68",
+          "keyword": "AI解析",
+          "typename": "日常",
+          "pubdate": 1793005069,
+          "fans": 6450,
+          "stat": {
+            "play": 3,
+            "like": 0,
+            "reply": 1,
+            "favorite": 0,
+            "danmaku": 0
+          },
+          "rate": null
+        }
+      ],
+      "small": []
+    }
+  ],
+  "errors": [
+    {
+      "scope": "search",
+      "keyword": "AI翻译",
+      "page": 1,
+      "code": "HTTP_412",
+      "msg": "HTTP 412"
+    }
+  ]
+}

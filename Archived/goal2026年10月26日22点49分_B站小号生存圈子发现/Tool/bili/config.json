@@ -1,0 +1,30 @@
+{
+  "goal": "在B站平台发现适合小号生存发展的圈子",
+  "window": {
+    "start": "2026-10-26T22:49:00+08:00",
+    "end": "2026-10-27T22:49:00+08:00"
+  },
+  "clusters": [
+    { "id": "ai-tools", "name": "AI工具/效率", "keywords": ["AI工具", "AI效率"] },
+    { "id": "handcraft", "name": "手工/绘画/手办", "keywords": ["手工", "绘画", "手办"] },
+    { "id": "ai-news", "name": "AI事件搬运/解析/翻译", "keywords": ["AI资讯", "AI翻译", "AI解析"] }
+  ],
+  "sampling": {
+    "order": "pubdate",
+    "pages": 3,
+    "searchDelayMs": 8000,
+    "searchJitterMs": 2500,
+    "apiDelayMs": 450,
+    "retries": 5,
+    "riskBackoffMs": 25000,
+    "cardCacheTtlHours": 6
+  },
+  "thresholds": {
+    "smallDef": "fans<=100 && archive_count<=20",
+    "maxFans": 100,
+    "maxArchiveCount": 20,
+    "minSmallSamples": 3,
+    "minMedianRate": 0.03,
+    "minClusterSamples": 30
+  }
+}

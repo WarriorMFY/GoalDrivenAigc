@@ -1,0 +1,111 @@
+{
+  "stamp": "20261026-230035",
+  "auditedAt": "2026-10-26T23:08:05+08:00",
+  "sha256": "e75f0d006b112d89d87441ea39b9d3df5e36ce47fea2ab2f92179726ddfc79b4",
+  "indexMatch": true,
+  "configTags": {
+    "order_now": "pubdate",
+    "order_sample": "pubdate",
+    "pages_now": 3,
+    "pages_sample": 3,
+    "minSmallSamples": 3,
+    "minMedianRate": 0.03
+  },
+  "clusters": [
+    {
+      "id": "ai-tools",
+      "name": "AI工具/效率",
+      "samples": 60,
+      "uniqueAuthors": 59,
+      "unknownFans": 0,
+      "smallSamples": 1,
+      "smallWithPlay": 1,
+      "medianRate": 0.03111111111111111,
+      "rateCheck": 0.03111111111111111,
+      "viewFailed": 0,
+      "medianAgeHours": 3.6,
+      "histAll": {
+        "100-999": 28,
+        "10k+": 18,
+        "1k-9k": 13,
+        "10-99": 1
+      },
+      "histSmall": {
+        "10-99": 1
+      },
+      "n0_ok": false,
+      "rate_ok": true
+    },
+    {
+      "id": "handcraft",
+      "name": "手工/绘画/手办",
+      "samples": 97,
+      "uniqueAuthors": 80,
+      "unknownFans": 0,
+      "smallSamples": 0,
+      "smallWithPlay": 0,
+      "medianRate": null,
+      "rateCheck": null,
+      "viewFailed": 0,
+      "medianAgeHours": null,
+      "histAll": {
+        "100-999": 45,
+        "10k+": 14,
+        "1k-9k": 37,
+        "10-99": 1
+      },
+      "histSmall": {},
+      "n0_ok": false,
+      "rate_ok": false
+    },
+    {
+      "id": "ai-news",
+      "name": "AI事件搬运/解析/翻译",
+      "samples": 160,
+      "uniqueAuthors": 127,
+      "unknownFans": 0,
+      "smallSamples": 5,
+      "smallWithPlay": 5,
+      "medianRate": 0.031007751937984496,
+      "rateCheck": 0.031007751937984496,
+      "viewFailed": 0,
+      "medianAgeHours": 24.8,
+      "histAll": {
+        "100-999": 56,
+        "10k+": 50,
+        "1k-9k": 43,
+        "1-9": 5,
+        "10-99": 6
+      },
+      "histSmall": {
+        "1-9": 3,
+        "10-99": 2
+      },
+      "n0_ok": true,
+      "rate_ok": true
+    }
+  ],
+  "summary": [
+    {
+      "id": "ai-tools",
+      "smallSamples": 1,
+      "medianRate": 0.03111111111111111,
+      "n0_ok": false,
+      "rate_ok": true
+    },
+    {
+      "id": "handcraft",
+      "smallSamples": 0,
+      "medianRate": null,
+      "n0_ok": false,
+      "rate_ok": false
+    },
+    {
+      "id": "ai-news",
+      "smallSamples": 5,
+      "medianRate": 0.031007751937984496,
+      "n0_ok": true,
+      "rate_ok": true
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{"runAt":"2026-10-26T23:00:31+08:00","sensor":"sensor.mjs","sampleStamp":"20261026-225752","overall":"GAP","remainingHours":23.81}
+{"runAt":"2026-10-26T23:08:06+08:00","sensor":"sensor.mjs","sampleStamp":"20261026-230035","overall":"PASS","remainingHours":23.68}
+{"runAt":"2026-10-26T23:27:53+08:00","sensor":"sensor.mjs","sampleStamp":"20261026-230832","overall":"PASS","remainingHours":23.35}
+{"runAt":"2026-10-27T20:59:27+08:00","sensor":"sensor.mjs","sampleStamp":"20261027-204003","overall":"PASS","remainingHours":1.83}
